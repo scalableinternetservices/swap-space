@@ -12,17 +12,19 @@ A market place where users can post items that they are willing to trade for oth
 
     **Github Username:** donle27
 
-    <img src="Images/Don.jpg" alt="drawing" style="width:300px;"/>
+    <img src="Images/Don.jpg" width="300px"/>
 
 2. Rishab Sukumar
 
     **Github Username:** rsukumar75
 
-    <img src="Images/Rishab.jpg" alt="drawing" style="width:300px;"/>
+    <img src="Images/Rishab.jpg" width="300px"/>
 
 3. Galen Wong
 
     **Github Username:** GalenWong
+
+    <img src="Images/Galen.jpg" width="300px">
 
 4. TBD
 
