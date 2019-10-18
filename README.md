@@ -30,5 +30,5 @@ A market place where users can post items that they are willing to trade for oth
 
     **Github Username:** Cheimu
     
-    <img src="Images/Gaohong.jpg" width="300px">
+    <img src="Images/Gaohong.jpeg" width="300px">
 
