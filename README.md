@@ -26,7 +26,9 @@ A market place where users can post items that they are willing to trade for oth
 
     <img src="Images/Galen.jpg" width="300px">
 
-4. TBD
+4. Gaohong Liu
 
-    **Github Username:**
+    **Github Username:** Cheimu
+    
+    <img src="Images/Gaohong.jpg" width="300px">
 
