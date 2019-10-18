@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :items
   get 'users/new'
 
   get '/signup', to: 'users#new'
