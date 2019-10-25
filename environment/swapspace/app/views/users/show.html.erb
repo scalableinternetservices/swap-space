@@ -26,8 +26,11 @@
         <td><%= item.user_id %></td>
         <td><%= item.created_at %></td>
         <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!-- only give option to edit if user is logged in -->
+        <% if logged_in? && current_user.id == @user.id %>
+          <td><%= link_to 'Edit', edit_item_path(item) %></td>
+          <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
