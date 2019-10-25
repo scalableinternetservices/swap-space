@@ -1,34 +1,24 @@
-# SwapSpace
+# README
 
-## About
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-A market place where users can post items that they are willing to trade for other items of value. Users can bid for items with any number of their own items. The seller will be able to filter the items being bid for theirs in order to choose which item to swap for.
+Things you may want to cover:
 
-## Team 
+* Ruby version
 
-**Discussion 1A (12:00 PM)**
+* System dependencies
 
-1. Don Le 
+* Configuration
 
-    **Github Username:** donle27
+* Database creation
 
-    <img src="Images/Don.jpg" width="300px"/>
+* Database initialization
 
-2. Rishab Sukumar
+* How to run the test suite
 
-    **Github Username:** rsukumar75
+* Services (job queues, cache servers, search engines, etc.)
 
-    <img src="Images/Rishab.jpg" width="300px"/>
+* Deployment instructions
 
-3. Galen Wong
-
-    **Github Username:** GalenWong
-
-    <img src="Images/Galen.jpg" width="300px">
-
-4. Gaohong Liu
-
-    **Github Username:** Cheimu
-    
-    <img src="Images/Gaohong.jpeg" width="300px">
-
+* ...
