@@ -4,4 +4,5 @@ user_one:
   id: 1
   name: User number one
   email: user_one@example.com
+  # password: password
   password_digest: <%= User.digest('password') %>
