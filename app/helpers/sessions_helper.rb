@@ -17,4 +17,10 @@ module SessionsHelper
         session.delete(:user_id)
         @current_user = nil
     end
+
+    # Store where the user (by seesion) previously was.
+    # Used by redirect.
+    def store_location
+        session[:forwarding_url] = request.url if request.get?
+    end
 end
