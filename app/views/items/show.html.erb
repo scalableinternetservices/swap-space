@@ -20,37 +20,6 @@
   <%= @item.created_at %>
 </p>
 
-<% if logged_in? %>
-  <% if @item.user_id == current_user.id %>
-    <p>
-      <strong> Other people want to trade <%=@item.name%> with :</strong>
-        <table>
-          <tbody>
-              
-
-          </tbody>
-        </table>
-    </p>
-  <% else %>
-    <p>
-      <strong> Select items you want to trade for <%=@item.name%> :</strong>
-        <table>
-          <tbody>
-            <% current_user.items.each do |item| %>
-              <tr>
-                <td><%= item.category %></td>
-                <td><%= item.name %></td>
-                <td><%= item.created_at %></td>
-                <td><%= link_to 'Trade', item %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-    </p>
-  <% end %>
-<% end %> 
-
-
 <% if logged_in? && @item.user_id == current_user.id %>
   <%= link_to 'Edit', edit_item_path(@item) %> |
 <% end %> 
