@@ -12,11 +12,13 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
+    login_as_test
     get new_item_url
     assert_response :success
   end
 
   test "should create item" do
+    login_as_test
     assert_difference('Item.count') do
       post items_url, params: { item: { category: @item.category, name: @item.name, user_id: @item.user_id } }
     end
@@ -30,16 +32,19 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
+    login_as_test
     get edit_item_url(@item)
     assert_response :success
   end
 
   test "should update item" do
+    login_as_test
     patch item_url(@item), params: { item: { category: @item.category, name: @item.name, user_id: @item.user_id } }
     assert_redirected_to item_url(@item)
   end
 
   test "should destroy item" do
+    login_as_test
     assert_difference('Item.count', -1) do
       delete item_url(@item)
     end

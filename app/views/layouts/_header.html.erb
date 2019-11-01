@@ -4,6 +4,7 @@
       <ul>
         <li><%= link_to "Home",   '#' %></li>
         <li><%= link_to "Help",   '#' %></li>
+        <li><%= link_to "Items",  '/items' %></li>
         <% if logged_in? %>
             <li><%= link_to 'Profile', current_user %></li>
             <li><%= link_to 'Log out', logout_path, method: :delete %> </li>

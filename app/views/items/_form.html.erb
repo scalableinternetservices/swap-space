@@ -23,7 +23,10 @@
 
   <div class="field">
     <%= form.label :user_id %>
+    <%= form.text_field :user_id, :input_html => { :value => @item.user_id }, :readonly => true %>
+    <!--
     <%= form.number_field :user_id, id: :item_user_id %>
+    -->
   </div>
   <div class="actions">
     <%= form.submit %>
