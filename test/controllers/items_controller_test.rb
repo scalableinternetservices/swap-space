@@ -12,6 +12,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
+    login_as_test
     get new_item_url
     assert_response :success
   end
