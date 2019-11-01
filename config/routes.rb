@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   get 'sessions/new'
 
-  resources :items
+  resources :items do
+    post '/trade/:bid_id', on: :member, to: 'items#add_trade', as: 'add_trade'
+  end
+
   get 'users/new'
 
   get '/signup', to: 'users#new'
