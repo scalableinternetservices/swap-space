@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191101193055) do
+ActiveRecord::Schema.define(version: 20191101210516) do
 
   create_table "items", force: :cascade do |t|
     t.text "category"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20191101193055) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
+  end
+
+  create_table "trades", id: false, force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "bid_by_item_id"
+    t.index ["bid_by_item_id", "item_id"], name: "index_trades_on_bid_by_item_id_and_item_id", unique: true
+    t.index ["item_id", "bid_by_item_id"], name: "index_trades_on_item_id_and_bid_by_item_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :add_trade]
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /items
@@ -60,6 +60,21 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def add_trade 
+    # bidding_for = @item.id
+    bidding_with = Item.find(params[:bid_id])
+    @item.trades << bidding_with
+    respond_to do |format|
+      if @item.save
+        format.html { redirect_to @item, notice: "Sucessfully bid #{bidding_with.name} for #{@item.name}" }
+        format.json { render :show, status: :ok, location: @item }
+      else 
+        format.html { render @item }
+        format.json { render json: @item.erros, status: :unprocessable_entity}
+      end
     end
   end
 
