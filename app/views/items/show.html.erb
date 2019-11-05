@@ -75,7 +75,11 @@
                 <td><%= item.name %></td>
                 <td><%= item.created_at %></td>
                 <td><%= link_to 'Show', item %></td>
-                <td><%= link_to 'Trade', add_trade_item_path(@item, :bid_id => item.id), method: :post  %></td>
+                <% if !@item.trades.include?(item) %>
+                  <td><%= link_to 'Trade', add_trade_item_path(@item, :bid_id => item.id), method: :post  %></td>
+                <% else %>
+                  <td><%= link_to 'Cancel' %></td>
+                <% end %>
               </tr>
             <% end %>
           </tbody>
