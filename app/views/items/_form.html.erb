@@ -13,12 +13,17 @@
 
   <div class="field">
     <%= form.label :category %>
-    <%= form.text_area :category, id: :item_category %>
+    <%= form.text_field :category, id: :item_category %>
   </div>
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_area :name, id: :item_name %>
+    <%= form.text_field :name, id: :item_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :item_description %>
   </div>
 
   <div class="field">

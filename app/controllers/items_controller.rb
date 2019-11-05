@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    session[:return_to] = request.referer
   end
 
   # GET /items/new
@@ -85,6 +86,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:category, :name, :user_id)
+      params.require(:item).permit(:category, :name, :user_id, :description)
     end
 end

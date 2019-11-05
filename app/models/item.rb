@@ -5,4 +5,6 @@ class Item < ApplicationRecord
         join_table: :trades,
         foreign_key: :item_id,
         association_foreign_key: :bid_by_item_id
+    validates :description, length: { maximum: 1000 }
+    validates :name, length: { maximum: 100 }
 end
