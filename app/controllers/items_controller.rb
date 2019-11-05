@@ -64,9 +64,8 @@ class ItemsController < ApplicationController
   end
 
   def add_trade 
-    # bidding_for = @item.id
     bidding_with = Item.find(params[:bid_id])
-    @item.trades << bidding_with
+    @item.bid_by << bidding_with
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: "Sucessfully bid #{bidding_with.name} for #{@item.name}" }
