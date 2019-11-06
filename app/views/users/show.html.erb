@@ -6,6 +6,24 @@
 </h1>
 <%= @user.email %>
 
+<p>
+<strong>Sort By </strong>
+<li><%= link_to "Name", {:order => session[:order], :sort => "name"} %></li>
+<li><%= link_to "User ID", {:order => session[:order], :sort => "user_id"} %></li>
+<li><%= link_to "Category", {:order => session[:order], :sort => "category"} %></li>
+<li><%= link_to "Date", {:order => session[:order], :sort => "created_at"} %></li>
+<li><%= link_to "Popularity", {:order => session[:order], :sort => "popularity"} %></li>
+<br>
+<% if params["sort"].present? %>
+  <% if params["order"] == "desc" %>
+    <%= link_to "Ascending", {:order => "asc", :sort => params["sort"],} %>
+  <% end %>
+  <% if params["order"] == "asc" %>
+    <%= link_to "Descending", {:order => "desc", :sort => params["sort"],} %>
+  <% end %>
+<% end %>
+</p>
+
 <!-- render a list of user's item -->
 <table>
   <thead>
@@ -14,17 +32,19 @@
       <th>Name</th>
       <th>User</th>
       <th>Date added</th>
+      <th> Popularity</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @user.items.each do |item| %>
+    <% @user_items.each do |item| %>
       <tr>
         <td><%= item.category %></td>
         <td><%= item.name %></td>
         <td><%= item.user_id %></td>
         <td><%= item.created_at %></td>
+        <td><%= item.popularity %></td>
         <td><%= link_to 'Show', item %></td>
         <!-- only give option to edit if user is logged in -->
         <% if logged_in? && current_user.id == @user.id %>

@@ -5,26 +5,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    if params["sort"].present?
-      attribute = params["sort"]
-      if params["order"].present?
-        order = params["order"]
-      else
-        order = "asc"
-      end
-      session[:order] = params["order"]
-      if attribute == "popularity"
-        if params["order"] == "asc"
-          @items = Item.all.sort_by(&:popularity)
-        else
-          @items = Item.all.sort_by(&:popularity).reverse
-        end
-      else
-        @items = Item.all.order(attribute => order)
-      end
-    else
-      @items = Item.all
-    end
+    @items = sorting
   end
 
   # GET /items/1
