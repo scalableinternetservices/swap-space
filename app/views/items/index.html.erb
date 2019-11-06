@@ -2,6 +2,23 @@
 
 <h1>Items</h1>
 
+<p>
+<strong>Sort By </strong>
+<li><%= link_to "Name", {:order => session[:order], :sort => "name"} %></li>
+<li><%= link_to "User ID", {:order => session[:order], :sort => "user_id"} %></li>
+<li><%= link_to "Category", {:order => session[:order], :sort => "category"} %></li>
+<li><%= link_to "Date", {:order => session[:order], :sort => "created_at"} %></li>
+<br>
+<% if params["sort"].present? %>
+  <% if params["order"] == "desc" %>
+    <%= link_to "Ascending", {:order => "asc", :sort => params["sort"],} %>
+  <% end %>
+  <% if params["order"] == "asc" %>
+    <%= link_to "Descending", {:order => "desc", :sort => params["sort"],} %>
+  <% end %>
+<% end %>
+</p>
+
 <table>
   <thead>
     <tr>
