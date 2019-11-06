@@ -5,7 +5,13 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    if params["sort"].present?
+      attribute = params["sort"].sub("-", "")
+      order = define_order(params["sort"])
+      @items = Item.all.order(attribute => order)
+    else
+      @items = Item.all
+    end
   end
 
   # GET /items/1
@@ -102,4 +108,9 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:category, :name, :user_id, :description)
     end
+
+    #define sorting order based on query parameters. "-" refers to descending.
+    def define_order(attribute)
+      attribute.start_with?("-") ? :desc : :asc
+  end
 end
