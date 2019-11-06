@@ -8,6 +8,7 @@
 <li><%= link_to "User ID", {:order => session[:order], :sort => "user_id"} %></li>
 <li><%= link_to "Category", {:order => session[:order], :sort => "category"} %></li>
 <li><%= link_to "Date", {:order => session[:order], :sort => "created_at"} %></li>
+<li><%= link_to "Popularity", {:order => session[:order], :sort => "popularity"} %></li>
 <br>
 <% if params["sort"].present? %>
   <% if params["order"] == "desc" %>
@@ -26,6 +27,7 @@
       <th>Name</th>
       <th>User</th>
       <th>Date added</th>
+      <th> Popularity</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -37,6 +39,7 @@
         <td><%= item.name %></td>
         <td><%= item.user_id %></td>
         <td><%= item.created_at %></td>
+        <td><%= item.popularity %></td>
         <td><%= link_to 'Show', item %></td>
       </tr>
     <% end %>
