@@ -76,11 +76,23 @@ class ItemsController < ApplicationController
         end
         return
       end
-      
+
     @item.bid_by << bidding_with
     if bidding_with.bid_by.include?(@item)
+      
       @item.trade_established = true
       bidding_with.trade_established = true
+      if @item.save && bidding_with.save
+       
+      else  
+        @item.trade_established = false
+        bidding_with.trade_established = false
+        respond_to do |format|
+          format.html { render @item }
+          format.json { render json: @item.errors, status: :unprocessable_entity}
+        end
+        return
+      end
     end
     respond_to do |format|
       if @item.save
