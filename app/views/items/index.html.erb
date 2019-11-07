@@ -33,7 +33,7 @@
 
   <tbody>
     <% @items.each do |item| %>
-      <% if item.trade_established != true %>
+      <% if !item.trade_established %>
         <tr>
           <td><%= item.category %></td>
           <td><%= item.name %></td>
