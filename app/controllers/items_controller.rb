@@ -76,10 +76,7 @@ class ItemsController < ApplicationController
         end
         return
       end
-   
-    
-    
-    
+      
     @item.bid_by << bidding_with
     if bidding_with.bid_by.include?(@item)
       @item.trade_established = true
