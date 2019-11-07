@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy, :add_trade]
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  #before_action :establish, only:  [:add_trade]
 
   # GET /items
   # GET /items.json
@@ -64,17 +65,37 @@ class ItemsController < ApplicationController
   end
 
   def add_trade 
+
     bidding_with = Item.find(params[:bid_id])
+    
+      if @item.trade_established && bidding_with.trade_established
+        respond_to do |format|
+          #format.html { render @item }
+          format.html { redirect_to @item, alert: "failed to bid #{@item.name} because items has been traded" }
+          format.json { render json: @item.errors, status: :unprocessable_entity}
+        end
+        return
+      end
+   
+    
+    
+    
     @item.bid_by << bidding_with
+    if bidding_with.bid_by.include?(@item)
+      @item.trade_established = true
+      bidding_with.trade_established = true
+    end
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: "Sucessfully bid #{bidding_with.name} for #{@item.name}" }
         format.json { render :show, status: :ok, location: @item }
+        
       else 
         format.html { render @item }
-        format.json { render json: @item.erros, status: :unprocessable_entity}
+        format.json { render json: @item.errors, status: :unprocessable_entity}
       end
     end
+   
   end
 
   private
@@ -87,4 +108,15 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:category, :name, :user_id, :description)
     end
+
+   # def establish
+    #  @item = Item.find(params[:id])
+     # respond_to do |format|
+      #  if @item.trade_established
+       #   format.html { render @item }
+        #  format.html { redirect_to @item, alert: "failed to bid #{@item.name} because  #{@item.name} has been traded" }
+         # format.json { render json: @item.erros, status: :unprocessable_entity}
+        #end
+     # end
+    #end
 end
