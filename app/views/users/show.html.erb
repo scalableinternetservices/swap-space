@@ -55,3 +55,23 @@
     <% end %>
   </tbody>
 </table>
+
+<p>
+<strong>Trade History </strong>
+  <% if logged_in? %>
+   <table>
+      <tbody>
+        <% current_user.items.each do |item| %>
+          <tr>
+            <% if item.trade_established %>
+              <td><%= link_to "#{item.name}", item %></td>
+              <th> Traded with </th>
+              <% item_traded = item.traded_item %>
+              <td><%= link_to "#{item_traded.name}", item_traded %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</p>
