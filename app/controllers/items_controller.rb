@@ -2,11 +2,8 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy, :add_trade, :cancel_bid]
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   #before_action :establish, only:  [:add_trade]
-<<<<<<< HEAD
   before_action :has_not_been_traded_assertion, only: [:edit, :update, :add_trade, :cancel_bid, :destroy]
   before_action :bid_has_not_been_traded_assertion, only: [:add_trade, :cancel_bid]
-=======
->>>>>>> 16556016544a8358ff0051c6f10778eff6355d13
 
   # GET /items
   # GET /items.json
