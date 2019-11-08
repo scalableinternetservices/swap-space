@@ -33,14 +33,15 @@
 
   <tbody>
     <% @items.each do |item| %>
-      <tr>
-        <td><%= item.category %></td>
-        <td><%= item.name %></td>
-        <td><%= item.user_id %></td>
-        <td><%= item.created_at %></td>
-        <td><%= item.popularity %></td>
-        <td><%= link_to 'Show', item %></td>
-      </tr>
+      <% if !item.trade_established %>
+        <tr>
+          <td><%= item.category %></td>
+          <td><%= item.name %></td>
+          <td><%= item.user_id %></td>
+          <td><%= item.created_at %></td>
+          <td><%= link_to 'Show', item %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
