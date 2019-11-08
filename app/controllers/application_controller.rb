@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
+  include ItemsHelper
 
   private
     # confirm currently user is logged in
@@ -14,32 +15,21 @@ class ApplicationController < ActionController::Base
     end
 
     #sort items by query params
-    def sorting
-      list = []
-      if params["id"].present?
-        list = Item.where(["user_id = :id", {id: params[:id]}])
-      else
-        list = Item.all
-      end
-      if params["sort"].present?
-          attribute = params["sort"]
-          if params["order"].present?
-            order = params["order"]
-          else
-            order = "asc"
-          end
-          session[:order] = params["order"]
-          if attribute == "popularity"
-            if params["order"] == "asc"
-              return list.sort_by(&:popularity)
-            else
-             return list.sort_by(&:popularity).reverse
-            end
-          else
-            return list.order(attribute => order)
-          end
-        else
-          return list
-      end
-  end
+    def sorted_items(items)
+      # items should be of type Item.all
+      list = items
+      # Filtering should be a TODO
+      # if params["id"].present?
+      #   list = Item.where(["user_id = :id", {id: params[:id]}])
+      # else
+      #   list = Item.all
+      # end
+      if params['sort'].present?
+        attribute = params['sort']
+        # default order is descending
+        order = params['order'].present? ? params['order'] : 'desc'
+        return item_sort(list, attribute, order == 'desc')
+      end 
+      return list
+    end
 end

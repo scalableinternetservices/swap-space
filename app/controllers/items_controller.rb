@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = sorting
+    @items = sorted_items(Item.all)
   end
 
   # GET /items/1

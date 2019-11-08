@@ -11,11 +11,10 @@
 <li><%= link_to "Popularity", {:order => session[:order], :sort => "popularity"} %></li>
 <br>
 <% if params["sort"].present? %>
-  <% if params["order"] == "desc" %>
-    <%= link_to "Ascending", {:order => "asc", :sort => params["sort"],} %>
-  <% end %>
   <% if params["order"] == "asc" %>
-    <%= link_to "Descending", {:order => "desc", :sort => params["sort"],} %>
+    <%= link_to "Sort descending instead", {:order => "desc", :sort => params["sort"],} %>
+  <% else %>
+    <%= link_to "Sort ascending instead", {:order => "asc", :sort => params["sort"],} %>
   <% end %>
 <% end %>
 </p>
