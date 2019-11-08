@@ -15,6 +15,9 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     session[:return_to] = request.referer
+    if @item.trade_established 
+      @traded_item = @item.traded_item
+    end
   end
 
   # GET /items/new

@@ -16,4 +16,12 @@ class Item < ApplicationRecord
     def popularity
         return bid_by.count
     end
+
+    def traded_item 
+        # this should have length one
+        traded_items = bid_by.select do |bidder|
+            bid_for.include?(bidder)
+        end
+        return traded_items[0]
+    end
 end
