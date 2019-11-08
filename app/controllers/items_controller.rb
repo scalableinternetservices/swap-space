@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy, :add_trade, :cancel_bid]
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   #before_action :establish, only:  [:add_trade]
+  before_action :has_not_been_traded_assertion, only: [:edit, :update, :add_trade, :cancel_bid, :destroy]
 
   # GET /items
   # GET /items.json
@@ -133,14 +134,12 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:category, :name, :user_id, :description)
     end
 
-   # def establish
-    #  @item = Item.find(params[:id])
-     # respond_to do |format|
-      #  if @item.trade_established
-       #   format.html { render @item }
-        #  format.html { redirect_to @item, alert: "failed to bid #{@item.name} because  #{@item.name} has been traded" }
-         # format.json { render json: @item.erros, status: :unprocessable_entity}
-        #end
-     # end
-    #end
+    def has_not_been_traded_assertion
+      if @item.trade_established 
+        respond_to do |format|
+          format.html { redirect_to @item, alert: 'The item has been traded. You cannot modify it'}
+          format.html { render json: @item.errors, status: :unprocessable_entity }
+        end
+      end
+    end
 end
