@@ -8,7 +8,19 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = sorted_items(Item.all)
+    item_per_page = 3
+    page_num = params['page_num'].present? ? params['page_num'].to_i : 1
+
+    queried_items = sorted_items(
+      Item.where(trade_established: false)
+      )
+        .offset((page_num - 1) * item_per_page)
+        .limit(item_per_page + 1)
+        # we get one more, so we know if there is the next page
+
+    @prev_page = page_num == 1 ? nil : page_num - 1
+    @next_page = queried_items.length <= item_per_page ? nil : page_num + 1
+    @items = queried_items.limit(item_per_page)
   end
 
   # GET /items/1
