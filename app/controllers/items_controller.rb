@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = sorted_items(Item.all)
   end
 
   # GET /items/1
@@ -102,4 +102,6 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:category, :name, :user_id, :description)
     end
+
+
 end

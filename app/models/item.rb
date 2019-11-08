@@ -12,4 +12,8 @@ class Item < ApplicationRecord
         association_foreign_key: :item_id
     validates :description, length: { maximum: 1000 }
     validates :name, length: { maximum: 100 }
+
+    def popularity
+        return bid_by.count
+    end
 end
