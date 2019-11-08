@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
-        format.html { render :new }
+        format.html { render new_item_page, notice: 'Cannot create item' }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
@@ -103,7 +103,7 @@ class ItemsController < ApplicationController
         bidding_with.trade_established = false
         respond_to do |format|
           # refresh page with error
-          format.html { render :new, alert: "Cannot establish trade" }
+          format.html { redirect_to @item, alert: "Cannot establish trade" }
           format.json { render json: @item.errors, status: :unprocessable_entity}
         end
         return
@@ -111,11 +111,11 @@ class ItemsController < ApplicationController
     end
     respond_to do |format|
       if @item.save
-        format.html { redirect_to :new, notice: "Sucessfully bid #{bidding_with.name} for #{@item.name}" }
+        format.html { redirect_to @item, notice: "Sucessfully bid #{bidding_with.name} for #{@item.name}" }
         format.json { render :show, status: :ok, location: @item }
         
       else 
-        format.html { render :new, alert: 'Some unknown error' }
+        format.html { redirect_to @item, alert: 'Some unknown error' }
         format.json { render json: @item.errors, status: :unprocessable_entity}
       end
     end
