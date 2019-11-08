@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
 
     #sort items by query params
     def sorting
-      # Filtering is not done and should be a TODO
-      # if params["id"].present?
-      #   list = Item.where(["user_id = :id", {id: params[:id]}])
-      # else
-      #   list = Item.all
-      # end
+      list = []
+      if params["id"].present?
+        list = Item.where(["user_id = :id", {id: params[:id]}])
+      else
+        list = Item.all
+      end
       if params["sort"].present?
           attribute = params["sort"]
           if params["order"].present?
