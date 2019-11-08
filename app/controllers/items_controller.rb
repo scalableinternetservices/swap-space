@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   #before_action :establish, only:  [:add_trade]
   before_action :has_not_been_traded_assertion, only: [:edit, :update, :add_trade, :cancel_bid, :destroy]
+  before_action :bid_has_not_been_traded_assertion, only: [:add_trade, :cancel_bid]
 
   # GET /items
   # GET /items.json
@@ -66,30 +67,17 @@ class ItemsController < ApplicationController
   end
 
   def add_trade 
-
     bidding_with = Item.find(params[:bid_id])
-    
-      if @item.trade_established && bidding_with.trade_established
-        respond_to do |format|
-          #format.html { render @item }
-          format.html { redirect_to @item, alert: "failed to bid #{@item.name} because items has been traded" }
-          format.json { render json: @item.errors, status: :unprocessable_entity}
-        end
-        return
-      end
-
     @item.bid_by << bidding_with
+
     if bidding_with.bid_by.include?(@item)
-      
       @item.trade_established = true
       bidding_with.trade_established = true
-      if @item.save && bidding_with.save
-       
-      else  
-        @item.trade_established = false
+      unless @item.save && bidding_with.save
         bidding_with.trade_established = false
         respond_to do |format|
-          format.html { render @item }
+          # refresh page with error
+          format.html { render :new, alert: "Cannot establish trade" }
           format.json { render json: @item.errors, status: :unprocessable_entity}
         end
         return
@@ -97,11 +85,11 @@ class ItemsController < ApplicationController
     end
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: "Sucessfully bid #{bidding_with.name} for #{@item.name}" }
+        format.html { redirect_to :new, notice: "Sucessfully bid #{bidding_with.name} for #{@item.name}" }
         format.json { render :show, status: :ok, location: @item }
         
       else 
-        format.html { render @item }
+        format.html { render :new, alert: 'Some unknown error' }
         format.json { render json: @item.errors, status: :unprocessable_entity}
       end
     end
@@ -109,7 +97,6 @@ class ItemsController < ApplicationController
   end
 
   def cancel_bid
-    
     bidding_with = Item.find(params[:bid_id])
     @item.bid_by.delete(bidding_with)
     respond_to do |format|
@@ -142,4 +129,17 @@ class ItemsController < ApplicationController
         end
       end
     end
+
+    def bid_has_not_been_traded_assertion
+      if params[:bid_id].present?
+        item = Item.find(params[:bid_id])
+        if item.trade_established 
+          respond_to do |format|
+            format.html { redirect_to item, alert: 'The item has been traded. You cannot modify it'}
+            format.html { render json: item.errors, status: :unprocessable_entity }
+          end
+        end
+      end
+    end
+
 end
