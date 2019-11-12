@@ -84,17 +84,19 @@
             </thead>
             <tbody>
               <% current_user.items.each do |item| %>
-                <tr>
-                  <td><%= item.category %></td>
-                  <td><%= item.name %></td>
-                  <td><%= item.created_at %></td>
-                  <td><%= link_to 'Show', item %></td>
-                  <% if !@item.bid_by.include?(item) %>
-                    <td><%= link_to 'Trade', add_trade_item_path(@item, :bid_id => item.id), method: :post  %></td>
-                  <% else %>
-                    <td><%= link_to 'Cancel', cancel_bid_item_path(@item, :bid_id => item.id), method: :post %></td>
-                  <% end %>
-                </tr>
+                <% unless item.trade_established %>
+                  <tr>
+                    <td><%= item.category %></td>
+                    <td><%= item.name %></td>
+                    <td><%= item.created_at %></td>
+                    <td><%= link_to 'Show', item %></td>
+                    <% if !@item.bid_by.include?(item) %>
+                      <td><%= link_to 'Trade', add_trade_item_path(@item, :bid_id => item.id), method: :post  %></td>
+                    <% else %>
+                      <td><%= link_to 'Cancel', cancel_bid_item_path(@item, :bid_id => item.id), method: :post %></td>
+                    <% end %>
+                  </tr>
+                <% end %>
               <% end %>
             </tbody>
           </table>

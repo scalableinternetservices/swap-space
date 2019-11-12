@@ -39,19 +39,41 @@
 
   <tbody>
     <% @user_items.each do |item| %>
-      <tr>
-        <td><%= item.category %></td>
-        <td><%= item.name %></td>
-        <td><%= item.user_id %></td>
-        <td><%= item.created_at %></td>
-        <td><%= item.popularity %></td>
-        <td><%= link_to 'Show', item %></td>
-        <!-- only give option to edit if user is logged in -->
-        <% if logged_in? && current_user.id == @user.id %>
-          <td><%= link_to 'Edit', edit_item_path(item) %></td>
-          <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
+      <% if !item.trade_established %>
+        <tr>
+          <td><%= item.category %></td>
+          <td><%= item.name %></td>
+          <td><%= item.user_id %></td>
+          <td><%= item.created_at %></td>
+          <td><%= item.popularity %></td>
+          <td><%= link_to 'Show', item %></td>
+          <!-- only give option to edit if user is logged in -->
+          <% if logged_in? && current_user.id == @user.id %>
+            <td><%= link_to 'Edit', edit_item_path(item) %></td>
+            <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
+
+<p>
+<strong>Trade History </strong>
+  <% if logged_in? %>
+   <table>
+      <tbody>
+        <% current_user.items.each do |item| %>
+          <tr>
+            <% if item.trade_established %>
+              <td><%= link_to "#{item.name}", item %></td>
+              <th> Traded with </th>
+              <% item_traded = item.traded_item %>
+              <td><%= link_to "#{item_traded.name}", item_traded %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</p>
