@@ -25,6 +25,12 @@
   <%= @item.description %>
 </p>
 
+<% if !@item.images.empty? %>
+  <% @item.images.each do |image| %>
+    <%= image_tag(image, style: 'height:100px;width:auto;') %>
+  <% end %>
+<% end %>
+
 <% if @item.trade_established %>
   <p>This item has been traded! You came too late lah.</p>
   <p>

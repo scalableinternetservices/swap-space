@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :add_trade, :cancel_bid]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :add_trade, :cancel_bid, :delete_image_attachment]
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   #before_action :establish, only:  [:add_trade]
   before_action :has_not_been_traded_assertion, only: [:edit, :update, :add_trade, :cancel_bid, :destroy]
@@ -126,6 +126,12 @@ class ItemsController < ApplicationController
    
   end
 
+  def delete_image_attachment
+    @image = ActiveStorage::Attachment.find(params[:image_id])
+    @image.purge_later
+    redirect_to Item.find(params[:id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -134,7 +140,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:category, :name, :user_id, :description)
+      params.require(:item).permit(:category, :name, :user_id, :description, images: [])
     end
 
     def has_not_been_traded_assertion
