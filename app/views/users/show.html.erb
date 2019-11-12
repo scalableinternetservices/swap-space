@@ -70,6 +70,16 @@
               <th> Traded with </th>
               <% item_traded = item.traded_item %>
               <td><%= link_to "#{item_traded.name}", item_traded %></td>
+              <th> at </th>
+
+
+              <% item_t = item.traded_item_time %>
+              
+              <% item_t_traded_with = item_traded.traded_item_time %>
+
+              <td> <%= item.compare(item_t['created_at'], item_t_traded_with['created_at'])%> </td>
+              
+
             <% end %>
           </tr>
         <% end %>
