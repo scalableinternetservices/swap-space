@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2019_11_08_211021) do
   create_table "trades", id: false, force: :cascade do |t|
     t.integer "item_id"
     t.integer "bid_by_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["bid_by_item_id", "item_id"], name: "index_trades_on_bid_by_item_id_and_item_id", unique: true
     t.index ["item_id", "bid_by_item_id"], name: "index_trades_on_item_id_and_bid_by_item_id", unique: true
   end
