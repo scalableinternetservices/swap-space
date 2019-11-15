@@ -26,12 +26,25 @@
     <%= form.text_area :description, id: :item_description %>
   </div>
 
+  <% if !@item.images.empty? %>
+    <% @item.images.each do |image| %>
+      <%= image_tag(image, style: 'height:100px;width:auto;') %>
+      <%= link_to 'Remove', delete_image_attachment_item_url(image_id: image.id),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  <% end %>
+  
   <div class="field">
     <%= form.label :user_id %>
     <%= form.text_field :user_id, :readonly => true %>
     <!--
     <%= form.number_field :user_id, id: :item_user_id %>
     -->
+  </div>
+
+  <div class="field">
+    <%= form.file_field :images, multiple: true %>
   </div>
   <div class="actions">
     <%= form.submit %>
