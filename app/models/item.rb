@@ -13,7 +13,6 @@ class Item < ApplicationRecord
     validates :description, length: { maximum: 1000 }
     validates :name, length: { maximum: 100 }
 
-    has_many_attached :images
     def popularity
         return bid_by.count
     end
