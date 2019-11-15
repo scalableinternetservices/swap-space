@@ -61,3 +61,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Add bootsnap gem
 gem 'bootsnap'
+
+gem 'bootstrap', '~> 4.0.0'
+
+gem 'jquery-rails'
