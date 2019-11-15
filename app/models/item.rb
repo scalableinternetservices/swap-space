@@ -26,7 +26,7 @@ class Item < ApplicationRecord
     end
 
     def traded_item_time
-        sql = "SELECT created_at FROM trades WHERE item_id = #{id}"
+        sql = "SELECT created_at FROM trades WHERE item_id = #{id} LIMIT 1"
         records_array = ActiveRecord::Base.connection.execute(sql)
         return records_array[0]
     end
