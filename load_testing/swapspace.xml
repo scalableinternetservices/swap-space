@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="swap-tsung-deploy.dpincekrr8.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+    <server host="swap-space-demo.dpincekrr8.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
   </servers>
 
 
@@ -40,23 +40,28 @@
   <sessions>
     <session name="http-example" probability="100" type="ts_http">
       <setdynvars sourcetype="random_number" start="1000"
-		      end="999999">
+		    end="9999">
 	<var name="random_username" />
       </setdynvars>
       <request>
 	 <dyn_variable name="authenticity_token" xpath="/html/head/meta[@name='csrf-token']/@content"></dyn_variable>
-	 <http url='/signup' version='1.1' method='GET'>
-	 </http>
+	<http url='/signup' version='1.1' method='GET'>
+	</http>
       </request>
       <setdynvars sourcetype="eval"
-		      code="fun({Pid,DynVars})->{ok,[Val]}=ts_dynvars:lookup(authenticity_token,DynVars), http_uri:encode(Val) end.">
+		    code="fun({Pid,DynVars})->{ok,[Val]}=ts_dynvars:lookup(authenticity_token,DynVars), http_uri:encode(Val) end.">
 	<var name="encoded_authenticity_token" />
       </setdynvars>
-      <request>
-      <http url='/signup' version='1.1'  contents='authenticity_token=%%_encoded_authenticity_token%%&amp;user%5Bname%5D=test&amp;user%5Bemail%5D=test%40gmail.com&amp;user%5Bpassword%5D=fdsafdsa&amp;user%5Bpasswrod_confirmation%5D=fdsafdsa&amp;commit=Create+my+account'  method='POST'>
+      <request subst="true">
+      <http url='/signup' version='1.1'  contents='authenticity_token=%%_encoded_authenticity_token%%&amp;user%5Bname%5D=test%%_random_username%%&amp;user%5Bemail%5D=test%%_random_username%%%40gmail.com&amp;user%5Bpassword%5D=fdsafdsa&amp;user%5Bpasswrod_confirmation%5D=fdsafdsa&amp;commit=Create+my+account'  method='POST'>
       </http>
       </request>
       <thinktime value="2" random="true"></thinktime>
+      <request subst="true">
+        <http url="/items" method="POST" version="1.1"
+                    contents='authenticity_token=%%_authenticity_token%%&amp;item%5Bcategory%5D=fruit;item%5Bname%5D=banana;item%5Buser_id%5D=1;commit=Create+Item'/>
+      </request>
+
 
     </session>
   </sessions>
