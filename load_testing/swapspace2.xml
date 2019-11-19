@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="swap-space-deploy.dpincekrr8.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+    <server host="galen-test-env.dpincekrr8.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
   </servers>
 
 
@@ -43,6 +43,11 @@
 		      end="9999999">
 	<var name="random_username" />
       </setdynvars>
+
+	<!-- 
+	     	Go to sign up page.
+		Retrieve CSRF token.
+	-->
       <request>
 	 <dyn_variable name="authenticity_token" xpath="/html/head/meta[@name='csrf-token']/@content"></dyn_variable>
 	 <http url='/signup' version='1.1' method='GET'>
@@ -52,22 +57,34 @@
 		      code="fun({Pid,DynVars})->{ok,[Val]}=ts_dynvars:lookup(authenticity_token,DynVars), http_uri:encode(Val) end.">
 	<var name="encoded_authenticity_token" />
       </setdynvars>
+	<!--
+	     Sign up a new user.
+	-->
       <request subst="true">
 	<dyn_variable name="user_id" re="Location: http://.*\.com/users/(\d+)\r"/>
       <http url='/signup' version='1.1'  contents='authenticity_token=%%_encoded_authenticity_token%%&amp;user%5Bname%5D=test%%_random_username%%&amp;user%5Bemail%5D=test%%_random_username%%%40gmail.com&amp;user%5Bpassword%5D=fdsafdsa&amp;user%5Bpasswrod_confirmation%5D=fdsafdsa&amp;commit=Create+my+account'  method='POST'>
       </http>
       </request>
       <thinktime value="2" random="true"></thinktime>
+	<!--
+		Create a new item. 
+	-->
       <request subst="true">
 	<dyn_variable name="item_id" re="Location: http://.*\.com/items/(\d+)\r"/> 
         <http url="/items" method="POST" version="1.1"
                     contents='authenticity_token=%%_encoded_authenticity_token%%&amp;item%5Bcategory%5D=fruit&amp;item%5Bname%5D=banana&amp;item%5Buser_id%5D=%%_user_id%%&amp;item%5Bimages%5B%5B%5B=&amp;commit=Create+Item'/>
       </request>
       <thinktime value="2" random="true"></thinktime>
+	<!--
+	     Go to items page.
+	-->
       <request>
 	<http url="/items" method="GET" version="1.1"/>
       </request>
       <thinktime value="2" random="true"></thinktime>
+	<!--
+	     Delete the item created above.
+	-->
       <request subst="true">
 	<dyn_variable name="item_id" re="Location: http://.*\.com/items/(\d+)\r"/>
         <http url="/items/%%_item_id%%" method="DELETE" contents='authenticity_token=%%_encoded_authenticity_token%%' version="1.1"/>
