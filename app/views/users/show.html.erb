@@ -67,31 +67,27 @@
 </table>
 
 <p>
-<strong>Trade History </strong>
   <% if logged_in? %>
-   <table>
-      <tbody>
+    <div class="card" style="width: 100%;">
+      <strong class="text-center card-header bg-light">Trade History </strong>
+      <ul class="list-group list-group-flush">
         <% current_user.items.each do |item| %>
-          <tr>
+          <li class="list-group-item">
             <% if item.trade_established %>
-              <td><%= link_to "#{item.name}", item %></td>
-              <th> Traded with </th>
+              <%= link_to "#{item.name}", item %>
+              <strong> Traded with </strong>
               <% item_traded = item.traded_item %>
-              <td><%= link_to "#{item_traded.name}", item_traded %></td>
-              <th> at </th>
-
-
+              <%= link_to "#{item_traded.name}", item_traded %>
+              <strong> Belonging To </strong>
+              <% owner = User.find(item_traded.user_id) %>
+              <%= link_to "#{owner.name}", owner %>
+              <strong> at </strong>
               <% item_t = item.traded_item_time %>
-              
               <% item_t_traded_with = item_traded.traded_item_time %>
-
-              <td> <%= item.compare(item_t['created_at'], item_t_traded_with['created_at'])%> </td>
-              
-
+              <%= item.compare(item_t['created_at'], item_t_traded_with['created_at'])%>
             <% end %>
-          </tr>
+          </li>
         <% end %>
-      </tbody>
-    </table>
-  <% end %>
+      </ul>
+    <% end %>
 </p>
