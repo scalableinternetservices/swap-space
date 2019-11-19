@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
-        format.html { render new_item_page, notice: 'Cannot create item' }
+        format.html { render new_item_path, notice: 'Cannot create item' }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
