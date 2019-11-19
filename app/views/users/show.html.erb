@@ -1,27 +1,35 @@
 
-<% provide(:title, @user.name) %>
-<h1>
-    <%= gravatar_for @user %>
-    <%= @user.name %>
-</h1>
-<%= @user.email %>
-
+<div class="card" style="width: 100%;">
+  <div class="card-body">
+    <% provide(:title, @user.name) %>
+    <div class= "text-center">
+      <%= gravatar_for @user %>
+      <h5 class="card-title text-center mt-2"><%= @user.name %></h5>
+      <p class="card-text text-center"><%= @user.email %></p>
+    </div>
+  </div>
+</div>
 <p>
-<strong>Sort By </strong>
-<li><%= link_to "Name", {:order => session[:order], :sort => "name"} %></li>
-<li><%= link_to "User ID", {:order => session[:order], :sort => "user_id"} %></li>
-<li><%= link_to "Category", {:order => session[:order], :sort => "category"} %></li>
-<li><%= link_to "Date", {:order => session[:order], :sort => "created_at"} %></li>
-<li><%= link_to "Popularity", {:order => session[:order], :sort => "popularity"} %></li>
-<br>
-<% if params["sort"].present? %>
+<div class="ml-2">
+  <button class= "btn btn-outline-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort By
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><%= link_to "Name", {:order => session[:order], :sort => "name",}, class: "dropdown-item" %></li>
+    <li><%= link_to "User ID", {:order => session[:order], :sort => "user_id",}, class: "dropdown-item" %></li>
+    <li><%= link_to "Category", {:order => session[:order], :sort => "category",}, class: "dropdown-item" %></li>
+    <li><%= link_to "Date", {:order => session[:order], :sort => "created_at",}, class: "dropdown-item" %></li>
+    <li><%= link_to "Popularity", {:order => session[:order], :sort => "popularity",}, class: "dropdown-item" %></li>
+  </div>
+  <% if params["sort"].present? %>
   <% if params["order"] == "desc" %>
-    <%= link_to "Ascending", {:order => "asc", :sort => params["sort"],} %>
+    <button  class= "btn" aria-haspopup="true" aria-expanded="false"><%= link_to "Ascending", {:order => "asc", :sort => params["sort"],},  class: "btn btn-outline-secondary" %></button>
   <% end %>
   <% if params["order"] == "asc" %>
-    <%= link_to "Descending", {:order => "desc", :sort => params["sort"],} %>
+    <button class="btn" aria-haspopup="true" aria-expanded="false"><%= link_to "Descending", {:order => "desc", :sort => params["sort"],}, class: "btn btn-outline-secondary" %></button>
   <% end %>
 <% end %>
+</div>
 </p>
 
 <!-- render a list of user's item -->
