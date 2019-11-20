@@ -35,4 +35,8 @@ class Item < ApplicationRecord
     def compare(a, b)
         return a < b ? b : a
     end
+
+    def url(s)
+        return puts("item/" + s.to_s)
+    end
 end

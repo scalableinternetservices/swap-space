@@ -54,6 +54,9 @@
               <tbody>
               <% @item.bid_by.each do |item| %>
                 <tr>
+                <div class="container">
+                <div class="card-deck flex-row flex-nowrap">
+                  <a href="/items/<%= item.id %>">
                   <div class="card" style="width: 100%;">
                     <div class="card-body">
                       <% provide(:title, item.name) %>
@@ -85,10 +88,12 @@
                         <h5 class="card-title text-center mt-2"><%= item.name %></h5>
                         <p class="card-text text-center"><%= item.category %></p>
                         <p class="card-text text-center"><%= item.created_at %></p>
-                        <p class="card-text text-center"><%= link_to 'Show', item %></p>
                         <p class="card-text text-center"><%= link_to 'Trade', add_trade_item_path(@item, :bid_id => item.id), method: :post  %></p>
                       </div>
                     </div>
+                  </div>
+                  </a>
+                  </div>
                   </div>
                 </tr>
               <% end %>
@@ -106,6 +111,9 @@
               <% current_user.items.each do |item| %>
                 <% unless item.trade_established %>
                   <tr>
+                  <div class="container">
+                  <div class="card-deck flex-row flex-nowrap">
+                  <a href="/items/<%= item.id %>">
                     <div class="card" style="width: 100%;">
                     <div class="card-body">
                       <% provide(:title, item.name) %>
@@ -137,7 +145,6 @@
                         <h5 class="card-title text-center mt-2"><%= item.name %></h5>
                         <p class="card-text text-center"><%= item.category %></p>
                         <p class="card-text text-center"><%= item.created_at %></p>
-                        <p class="card-text text-center"><%= link_to 'Show', item %></p>
                         <% if !@item.bid_by.include?(item) %>
                           <p class="card-text text-center"><%= link_to 'Trade', add_trade_item_path(@item, :bid_id => item.id), method: :post  %></p>
                         <% else %>
@@ -147,7 +154,9 @@
                     </div>
                   </div>
 
-
+                  </a>
+                  </div>
+                  </div>
 
 
                   </tr>
