@@ -34,46 +34,44 @@
     <% @items.each do |item| %>
       <tr>
       <div class="container">
-      <div class="card-deck flex-row flex-nowrap">
-        <a href="/items/<%= item.id %>">
-          <div class="card" style="width: 100%;">
-            <div class="card-body">
-              <% provide(:title, item.name) %>
-              <div class= "text-center">
+          <a href="/items/<%= item.id %>">
+            <div class="card" style="width: 100%;">
+              <div class="card-body">
+                <% provide(:title, item.name) %>
+                <div class= "text-center">
 
-                <% if !item.images.empty? %>
-              
-                <div id="MyCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-                  <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                      <%= image_tag(item.images.first, style: 'height:100px;width:auto;') %>
-                    </div>
-                    <% item.images.drop(1).each do |photo| %>
-                      <div class="carousel-item">
-                        <%= image_tag(photo, style: 'height:100px;width:auto;') %>
+                  <% if !item.images.empty? %>
+                
+                  <div id="MyCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                      <div class="carousel-item active">
+                        <%= image_tag(item.images.first, style: 'height:100px;width:auto;') %>
                       </div>
-                    <% end %>
-                  </div>
-      
-                    <ol class="carousel-indicators">
-                    <% item.images.each_with_index do |photo, n| %>
-                      <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
-                    <% end %>
-                    </ol>
-                  </div>
-                <% end %>
+                      <% item.images.drop(1).each do |photo| %>
+                        <div class="carousel-item">
+                          <%= image_tag(photo, style: 'height:100px;width:auto;') %>
+                        </div>
+                      <% end %>
+                    </div>
+        
+                      <ol class="carousel-indicators">
+                      <% item.images.each_with_index do |photo, n| %>
+                        <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+                      <% end %>
+                      </ol>
+                    </div>
+                  <% end %>
 
-              
-                <h5 class="card-title text-center mt-2"><%= item.name %></h5>
-                <p class="card-text text-center"><%= item.category %></p>
-                <p class="card-text text-center"><%= item.user_id %></p>
-                <p class="card-text text-center"><%= item.created_at %></p>
-                <p class="card-text text-center"><%= item.popularity %></p>
+                
+                  <h5 class="card-title text-center mt-2"><%= item.name %></h5>
+                  <p class="card-text text-center"><%= item.category %></p>
+                  <p class="card-text text-center"><%= item.user_id %></p>
+                  <p class="card-text text-center"><%= item.created_at %></p>
+                  <p class="card-text text-center"><%= item.popularity %></p>
+                </div>
               </div>
             </div>
-          </div>
-        </a> 
-      </div> 
+          </a> 
       </div>
       </tr>
     <% end %>
