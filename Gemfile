@@ -65,3 +65,5 @@ gem 'bootsnap'
 gem 'bootstrap', '~> 4.0.0'
 
 gem 'jquery-rails'
+
+gem 'jasny-bootstrap-rails'

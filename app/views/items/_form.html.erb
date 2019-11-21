@@ -1,8 +1,9 @@
 <%= form_with(model: item, local: true) do |form| %>
   <% if item.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-danger col-md-6 offset-md-3">">
       <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
+    </div>
+    <div class="text-danger col-md-6 offset-md-3">
       <ul>
       <% item.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,19 +12,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category, id: :item_category %>
+  <div class="field form-group col-md-4 offset-md-4">
+    <%= form.text_field :category, id: :item_category, placeholder: "Category", class: "form-control", :required => true %>
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :item_name %>
+  <div class="field form-group col-md-4 offset-md-4">
+    <%= form.text_field :name, id: :item_name, placeholder: "Name", class: "form-control", :required => true %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :item_description %>
+  <div class="field form-group col-md-4 offset-md-4">
+    <%= form.text_area :description, id: :item_description, placeholder: "Description", class: "form-control" %>
   </div>
 
   <% if !@item.images.empty? %>
@@ -36,17 +34,23 @@
   <% end %>
   
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, :readonly => true %>
+    <%= form.label :user_id, style: "display: none;" %>
+    <%= form.text_field :user_id, :readonly => true, class: "form-control", style: "display: none;"  %>
     <!--
     <%= form.number_field :user_id, id: :item_user_id %>
     -->
   </div>
-
-  <div class="field">
-    <%= form.file_field :images, multiple: true %>
+  <div class="text-center">
+    <div class="fileinput fileinput-new" data-provides="fileinput">
+      <span class="btn btn-outline-secondary btn-file">
+        <span class="fileinput-new">Select files</span>
+        <span class="fileinput-exists">Change</span>
+        <%= form.file_field :images, multiple: true, accept: "image/png, image/gif, image/jpeg"%>
+      </span>
+      <span class="fileinput-exists"> Files added </span>
+    </div>
   </div>
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions text-center mt-2">
+    <%= form.submit :Submit, class: "btn btn-outline-primary" %>
   </div>
 <% end %>
