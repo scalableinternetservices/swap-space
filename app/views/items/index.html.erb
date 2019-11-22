@@ -5,7 +5,6 @@
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <li><%= link_to "Name", {:order => session[:order], :sort => "name",}, class: "dropdown-item" %></li>
-      <li><%= link_to "User ID", {:order => session[:order], :sort => "user_id",}, class: "dropdown-item" %></li>
       <li><%= link_to "Category", {:order => session[:order], :sort => "category",}, class: "dropdown-item" %></li>
       <li><%= link_to "Date", {:order => session[:order], :sort => "created_at",}, class: "dropdown-item" %></li>
       <li><%= link_to "Popularity", {:order => session[:order], :sort => "popularity",}, class: "dropdown-item" %></li>
@@ -61,6 +60,7 @@
                     <p class="card-text">Category: <%= item.category %></p>
                     <% owner = User.find(item.user_id) %>
                     <p class="card-text">User: <%= owner.name %></p>
+                    <p class="card-text">Description: <%= item.description%></p>
                     <p class="card-text">Date Added: <%= item.created_at %></p>
                     <p class="card-text">Popularity: <%= item.popularity %></p>
                   </div>
