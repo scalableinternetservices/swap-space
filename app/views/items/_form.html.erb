@@ -24,14 +24,16 @@
     <%= form.text_area :description, id: :item_description, placeholder: "Description", class: "form-control" %>
   </div>
 
-  <% if !@item.images.empty? %>
-    <% @item.images.each do |image| %>
-      <%= image_tag(image, style: 'height:100px;width:auto;') %>
-      <%= link_to 'Remove', delete_image_attachment_item_url(image_id: image.id),
+  <div class="form-group col-md-4 offset-md-4">
+    <% if !@item.images.empty? %>
+      <% @item.images.each do |image| %>
+        <%= image_tag(image, style: 'height:100px;width:auto;') %>
+        <button class="btn"><%= link_to 'Remove', delete_image_attachment_item_url(image_id: image.id),
                   method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
+                  data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary" %></button>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
   
   <div class="field">
     <%= form.label :user_id, style: "display: none;" %>

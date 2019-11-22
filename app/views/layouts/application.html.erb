@@ -10,9 +10,9 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <div class="mt-4">
+    <div>
       <% flash.each do |message_type, message| %>
-        <div class="text-center col-md-6 offset-md-3 alert alert-<%= message_type %>"><%= message %></div>
+        <div class="text-center col-md-6 mt-4 offset-md-3 alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
     </div>
     <%= yield %>

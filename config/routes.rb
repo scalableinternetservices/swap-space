@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'sessions/new'
+  root to: 'pages#homepage'
 
   resources :items do
     post '/trade/:bid_id', on: :member, to: 'items#add_trade', as: 'add_trade'
