@@ -78,9 +78,6 @@
 	<var name="encoded_authenticity_token" />
       </setdynvars>
 
-
-
-
 	<!--
 		Create a new item. 
 	-->
@@ -94,15 +91,28 @@
       <thinktime value="2" random="true"></thinktime>
 	<!--
 	     Go to items page.
+       Get first item id.
 	-->
       <request>
-	<http url="/items" method="GET" version="1.1"/>
+        <dyn_variable name="first_item" xpath="/html/body/div[3]/ul/li/a[1]/@href"></dyn_variable> 
+        <http url="/items" method="GET" version="1.1"/>
       </request>
 
-
-
+      <setdynvars sourcetype="eval"
+        code='fun({Pid,DynVars})->
+                  {ok,Val}=ts_dynvars:lookup(first_item,DynVars),
+                  L1 = re:replace(Val,"/items/","",[{return,list}]) end. '>
+        <var name="new_first_item" />
+      </setdynvars>
 
       <thinktime value="2" random="true"></thinktime>
+      <!-- 
+        trade with first item
+      -->
+      <request subst="true">
+        <dyn_variable name="item_id" re="Location: http://.*\.com/items/(\d+)\r"/>
+        <http url="/items/%%_item_id%%/trade/%%_new_first_item%%" method="POST" contents='authenticity_token=%%_encoded_authenticity_token%%' version="1.1"/>
+      </request>
 	<!--
 	     Delete the item created above.
 	-->
