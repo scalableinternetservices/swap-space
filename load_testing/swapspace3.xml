@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="galen-test-env.dpincekrr8.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+    <server host="localhost" port="3000" type="tcp"></server>
   </servers>
 
 
@@ -59,14 +59,14 @@
       </request>
       <thinktime value="2" random="true"></thinktime>
       <request subst="true">
-	<dyn_variable name="item_id" re="Location: http://.*\.com/items/(\d+)\r"/> 
+	<dyn_variable name="item_id" re="Location: http://.*/items/(\d+)\r"/> 
         <http url="/items" method="POST" version="1.1"
                     contents='authenticity_token=%%_encoded_authenticity_token%%&amp;item%5Bcategory%5D=fruit&amp;item%5Bname%5D=banana&amp;item%5Buser_id%5D=%%_user_id%%&amp;item%5Bimages%5B%5B%5B=&amp;commit=Create+Item'/>
       </request>
       <thinktime value="2" random="true"></thinktime>
       <request subst="true">
-	<dyn_variable name="first_item" xpath="/html/body/table/tbody/tr[1]/td[6]/a/@href"></dyn_variable> 
-	<http url="/items" method="GET" version="1.1"/>
+        <dyn_variable name="first_item" xpath="/html/body/div[3]/ul/li/a[1]/@href"></dyn_variable> 
+        <http url="/items" method="GET" version="1.1"/>
       </request>
       <setdynvars sourcetype="eval"
         code='fun({Pid,DynVars})->
