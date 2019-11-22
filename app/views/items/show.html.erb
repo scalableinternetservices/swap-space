@@ -1,174 +1,170 @@
-<div class="card" style="width: 100%;">
-  <div class="card-body">
-    <% provide(:title, @item.name) %>
-    <div class= "text-center">
-
+<div class="card mt-4 col-md-6 offset-md-3 pl-0 pr-0">
+  <div class="row no-gutters">
+    <div class="col-md-4">
       <% if !@item.images.empty? %>
-    
-      <div id="MyCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active">
-            <%= image_tag(@item.images.first, style: 'height:100px;width:auto;') %>
-          </div>
-          <% @item.images.drop(1).each do |photo| %>
-            <div class="carousel-item">
-              <%= image_tag(photo, style: 'height:100px;width:auto;') %>
+        <div id="MyCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+              <%= image_tag(@item.images.first, style: 'height: 100%; width: 100%; object-fit: contain') %>
             </div>
-          <% end %>
-        </div>
-
+            <% @item.images.drop(1).each do |photo| %>
+              <div class="carousel-item">
+                <%= image_tag(photo, style: 'height: 100%; width: 100%; object-fit: contain') %>
+              </div>
+            <% end %>
+          </div>
           <ol class="carousel-indicators">
-          <% @item.images.each_with_index do |photo, n| %>
-            <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
-          <% end %>
+            <% @item.images.each_with_index do |photo, n| %>
+              <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+            <% end %>
           </ol>
         </div>
       <% end %>
-
-    
-      <h5 class="card-title text-center mt-2"><%= @item.name %></h5>
-      <p class="card-text text-center"><%= @item.category %></p>
-      <p class="card-text text-center"><%= @item.user_id %></p>
-      <p class="card-text text-center"><%= @item.created_at %></p>
-      <p class="card-text text-center"><%= @item.popularity %></p>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <% provide(:title, @item.name) %>
+        <h4 class="card-title mt-2"><%= @item.name %></h5>
+        <p class="card-text">Category: <%= @item.category %></p>
+        <% owner = User.find(@item.user_id) %>
+        <p class="card-text">User: <%= owner.name %></p>
+        <p class="card-text">Date Added: <%= @item.created_at %></p>
+        <p class="card-text">Popularity: <%= @item.popularity %></p>
+      </div>
     </div>
   </div>
 </div>
 
 <% if @item.trade_established %>
-  <p>This item has been traded! You came too late lah.</p>
-  <p>
-    It was traded with
-    <%= link_to "\"#{@traded_item.name}\"", @traded_item %>
+  <p class="text-center mt-3">This item has been traded! You came too late lah.</p>
+  <p class="text-center">
+    It was traded with <%= link_to "\"#{@traded_item.name}\"", @traded_item %>
   </p>
   
 <% else %>
   <% if logged_in? %>
     <% if @item.user_id == current_user.id %>
       <p>
-        <strong> Other people want to trade <%=@item.name%> with :</strong>
-          <table>
-            <tbody>
-              <tbody>
+        <div class="card mt-4 pl-0 pr-0"> 
+          <div class="text-center card-header bg-light navbar-brand mr-0">
+            Other people want to trade <%=@item.name%> with
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
               <% @item.bid_by.each do |item| %>
-                <tr>
-                <div class="container">
-                <div class="card-deck flex-row flex-nowrap">
-                  <a href="/items/<%= item.id %>">
-                  <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                      <% provide(:title, item.name) %>
-                      <div class= "text-center">
-
-                        <% if !item.images.empty? %>
-                      
-                        <div id="MyCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-                          <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item active">
-                              <%= image_tag(item.images.first, style: 'height:100px;width:auto;') %>
-                            </div>
-                            <% item.images.drop(1).each do |photo| %>
-                              <div class="carousel-item">
-                                <%= image_tag(photo, style: 'height:100px;width:auto;') %>
+                <a href="/items/<%= item.id %>" class="text-dark" style="text-decoration: none">
+                  <div class="container">
+                    <div class="card mb-3 col-md-6 offset-md-3 pl-0 pr-0">
+                      <div class="row no-gutters">
+                        <div class="col-md-4">
+                          <% if !item.images.empty? %>
+                            <div id="MyCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+                              <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                  <%= image_tag(item.images.first, style: 'height: 100%; width: 100%; object-fit: contain') %>
+                                </div>
+                                <% item.images.drop(1).each do |photo| %>
+                                  <div class="carousel-item">
+                                    <%= image_tag(photo, style: 'height: 100%; width: 100%; object-fit: contain') %>
+                                  </div>
+                                <% end %>
                               </div>
-                            <% end %>
+                              <ol class="carousel-indicators">
+                                <% item.images.each_with_index do |photo, n| %>
+                                  <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+                                <% end %>
+                              </ol>
+                            </div>
+                          <% end %>
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                           <% provide(:title, item.name) %>
+                            <h4 class="card-title mt-2"><%= item.name %></h5>
+                            <p class="card-text">Category: <%= item.category %></p>
+                            <% owner = User.find(item.user_id) %>
+                            <p class="card-text">User: <%= owner.name %></p>
+                            <p class="card-text">Date Added: <%= item.created_at %></p>
+                            <p class="card-text">Popularity: <%= item.popularity %></p>
                           </div>
-              
-                            <ol class="carousel-indicators">
-                            <% item.images.each_with_index do |photo, n| %>
-                              <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
-                            <% end %>
-                            </ol>
-                          </div>
-                        <% end %>
-
-                      
-                        <h5 class="card-title text-center mt-2"><%= item.name %></h5>
-                        <p class="card-text text-center"><%= item.category %></p>
-                        <p class="card-text text-center"><%= item.created_at %></p>
-                        <p class="card-text text-center"><%= link_to 'Trade', add_trade_item_path(@item, :bid_id => item.id), method: :post  %></p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  </a>
-                  </div>
-                  </div>
-                </tr>
+                </a>
               <% end %>
-            </tbody>
-
-            </tbody>
-          </table>
+            </li>
+          </ul>
+        </div>
       </p>
     <% else %>
       <p>
-        <strong> Select items you want to trade for <%=@item.name%> :</strong>
-          <table>
-            
-            <tbody>
+        <div class="card mt-4 pl-0 pr-0">
+          <div class="text-center card-header bg-light navbar-brand mr-0"> 
+            Select items you want to trade for <%=@item.name%>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
               <% current_user.items.each do |item| %>
                 <% unless item.trade_established %>
-                  <tr>
-                  <div class="container">
-                  <div class="card-deck flex-row flex-nowrap">
-                  <a href="/items/<%= item.id %>">
-                    <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                      <% provide(:title, item.name) %>
-                      <div class= "text-center">
-
-                        <% if !item.images.empty? %>
-                      
-                        <div id="MyCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-                          <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item active">
-                              <%= image_tag(item.images.first, style: 'height:100px;width:auto;') %>
-                            </div>
-                            <% item.images.drop(1).each do |photo| %>
-                              <div class="carousel-item">
-                                <%= image_tag(photo, style: 'height:100px;width:auto;') %>
+                    <div class="container">
+                      <div class="card mb-3 col-md-6 offset-md-3 pl-0 pr-0">
+                        <div class="row no-gutters">
+                          <div class="col-md-4">
+                            <% if !item.images.empty? %>
+                              <div id="MyCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+                                <div class="carousel-inner" role="listbox">
+                                  <div class="carousel-item active">
+                                    <%= image_tag(item.images.first, style: 'height: 100%; width: 100%; object-fit: contain') %>
+                                  </div>
+                                  <% item.images.drop(1).each do |photo| %>
+                                    <div class="carousel-item">
+                                      <%= image_tag(photo, style: 'height: 100%; width: 100%; object-fit: contain') %>
+                                    </div>
+                                  <% end %>
+                                </div>
+                                <ol class="carousel-indicators">
+                                  <% item.images.each_with_index do |photo, n| %>
+                                    <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+                                  <% end %>
+                                </ol>
                               </div>
                             <% end %>
                           </div>
-              
-                            <ol class="carousel-indicators">
-                            <% item.images.each_with_index do |photo, n| %>
-                              <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+                          <div class="col-md-8">
+                            <div class="card-body pb-0">
+                              <% provide(:title, item.name) %>
+                              <h4 class="card-title"><%= item.name %></h5>
+                              <p class="card-text">Category: <%= item.category %></p>
+                              <% owner = User.find(item.user_id) %>
+                              <p class="card-text">User: <%= owner.name %></p>
+                              <p class="card-text">Date Added: <%= item.created_at %></p>
+                              <p class="card-text">Popularity: <%= item.popularity %></p>
+                            </div>
+                            <button class="btn ml-3 px-1" aria-haspopup="true" aria-expanded="false"><%= link_to 'Show', item, class: "btn btn-outline-primary" %></button>
+                            <% if !@item.bid_by.include?(item) %>
+                              <button class="btn px-1" aria-haspopup="true" aria-expanded="false"><%= link_to 'Trade', add_trade_item_path(@item, :bid_id => item.id), method: :post, class:"btn btn-outline-primary"  %></button>
+                            <% else %>
+                              <button class="btn px-1" aria-haspopup="true" aria-expanded="false"><%= link_to 'Cancel', cancel_bid_item_path(@item, :bid_id => item.id), method: :post, class: "btn btn-outline-danger" %></button>
                             <% end %>
-                            </ol>
                           </div>
-                        <% end %>
-
-                      
-                        <h5 class="card-title text-center mt-2"><%= item.name %></h5>
-                        <p class="card-text text-center"><%= item.category %></p>
-                        <p class="card-text text-center"><%= item.created_at %></p>
-                        <% if !@item.bid_by.include?(item) %>
-                          <p class="card-text text-center"><%= link_to 'Trade', add_trade_item_path(@item, :bid_id => item.id), method: :post  %></p>
-                        <% else %>
-                          <p class="card-text text-center"><%= link_to 'Cancel', cancel_bid_item_path(@item, :bid_id => item.id), method: :post %></p>
-                        <% end %>
+                        </div>
                       </div>
                     </div>
-                  </div>
-
-                  </a>
-                  </div>
-                  </div>
-
-
-                  </tr>
+                 
                 <% end %>
               <% end %>
-            </tbody>
-          </table>
+            </li>
+          </ul>
+        </div>
       </p>
     <% end %>
   <% end %> 
 <% end %>
 
-
-<% if logged_in? && @item.user_id == current_user.id %>
-  <%= link_to 'Edit', edit_item_path(@item) %> |
-<% end %> 
-<%= link_to 'Back', session[:return_to] %>
+<div class="text-center">
+  <% if logged_in? && @item.user_id == current_user.id %>
+    <button class="btn px-0"><%= link_to 'Edit', edit_item_path(@item), class: "btn btn-outline-primary"%></button>
+  <% end %> 
+  <button class="btn"><%= link_to 'Back', session[:return_to], class: "btn btn-outline-primary" %></button>
+</div>
