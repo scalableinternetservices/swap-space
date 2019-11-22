@@ -4,6 +4,8 @@ class AddItemToItemRelation < ActiveRecord::Migration[5.1]
       t.integer :item_id
       # descirbe what items used to bid :itme_id
       t.integer :bid_by_item_id
+
+      t.timestamps
     end
 
     add_index(:trades, [:item_id, :bid_by_item_id], :unique => true)

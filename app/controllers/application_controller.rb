@@ -30,6 +30,6 @@ class ApplicationController < ActionController::Base
         order = params['order'].present? ? params['order'] : 'desc'
         return item_sort(list, attribute, order == 'desc')
       end 
-      return list
+      return list.order('RANDOM()')
     end
 end

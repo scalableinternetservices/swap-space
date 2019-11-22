@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :add_trade, :cancel_bid]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :add_trade, :cancel_bid, :delete_image_attachment]
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   #before_action :establish, only:  [:add_trade]
   before_action :has_not_been_traded_assertion, only: [:edit, :update, :add_trade, :cancel_bid, :destroy]
@@ -8,19 +8,10 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    item_per_page = 3
-    page_num = params['page_num'].present? ? params['page_num'].to_i : 1
-
     queried_items = sorted_items(
       Item.where(trade_established: false)
       )
-        .offset((page_num - 1) * item_per_page)
-        .limit(item_per_page + 1)
-        # we get one more, so we know if there is the next page
-
-    @prev_page = page_num == 1 ? nil : page_num - 1
-    @next_page = queried_items.length <= item_per_page ? nil : page_num + 1
-    @items = queried_items.limit(item_per_page)
+    @items = queried_items
   end
 
   # GET /items/1
@@ -45,13 +36,14 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    @item.user = current_user
 
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
-        format.html { render new_item_page, notice: 'Cannot create item' }
+        format.html { render new_item_path, notice: 'Cannot create item' }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
@@ -138,6 +130,12 @@ class ItemsController < ApplicationController
    
   end
 
+  def delete_image_attachment
+    @image = ActiveStorage::Attachment.find(params[:image_id])
+    @image.purge_later
+    redirect_to Item.find(params[:id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -146,7 +144,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:category, :name, :user_id, :description)
+      params.require(:item).permit(:category, :name, :description, images: [])
     end
 
     def has_not_been_traded_assertion

@@ -13,6 +13,7 @@ class Item < ApplicationRecord
     validates :description, length: { maximum: 1000 }
     validates :name, length: { maximum: 100 }
 
+    has_many_attached :images
     def popularity
         return bid_by.count
     end
@@ -23,5 +24,19 @@ class Item < ApplicationRecord
             bid_for.include?(bidder)
         end
         return traded_items[0]
+    end
+
+    def traded_item_time
+        sql = "SELECT created_at FROM trades WHERE item_id = #{id} LIMIT 1"
+        records_array = ActiveRecord::Base.connection.execute(sql)
+        return records_array[0]
+    end
+
+    def compare(a, b)
+        return a < b ? b : a
+    end
+
+    def url(s)
+        return puts("item/" + s.to_s)
     end
 end

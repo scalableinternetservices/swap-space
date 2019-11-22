@@ -1,79 +1,117 @@
 
-<% provide(:title, @user.name) %>
-<h1>
-    <%= gravatar_for @user %>
-    <%= @user.name %>
-</h1>
-<%= @user.email %>
-
+<div class="card" style="width: 100%;">
+  <div class="card-body">
+    <% provide(:title, @user.name) %>
+    <div class= "text-center">
+      <%= gravatar_for @user %>
+      <h5 class="card-title text-center mt-4"><%= @user.name %></h5>
+      <p class="card-text text-center"><%= @user.email %></p>
+    </div>
+  </div>
+</div>
 <p>
-<strong>Sort By </strong>
-<li><%= link_to "Name", {:order => session[:order], :sort => "name"} %></li>
-<li><%= link_to "User ID", {:order => session[:order], :sort => "user_id"} %></li>
-<li><%= link_to "Category", {:order => session[:order], :sort => "category"} %></li>
-<li><%= link_to "Date", {:order => session[:order], :sort => "created_at"} %></li>
-<li><%= link_to "Popularity", {:order => session[:order], :sort => "popularity"} %></li>
-<br>
-<% if params["sort"].present? %>
-  <% if params["order"] == "desc" %>
-    <%= link_to "Ascending", {:order => "asc", :sort => params["sort"],} %>
+<div class="text-center">
+  <% if !@user_items.empty? %>
+    <button class= "btn btn-outline-secondary dropdown-toggle " id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Sort By
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li><%= link_to "Name", {:order => session[:order], :sort => "name",}, class: "dropdown-item" %></li>
+      <li><%= link_to "User ID", {:order => session[:order], :sort => "user_id",}, class: "dropdown-item" %></li>
+      <li><%= link_to "Category", {:order => session[:order], :sort => "category",}, class: "dropdown-item" %></li>
+      <li><%= link_to "Date", {:order => session[:order], :sort => "created_at",}, class: "dropdown-item" %></li>
+      <li><%= link_to "Popularity", {:order => session[:order], :sort => "popularity",}, class: "dropdown-item" %></li>
+    </div>
+    <% if params["sort"].present? %>
+      <% if params["order"] == "desc" %>
+        <button  class= "btn" aria-haspopup="true" aria-expanded="false"><%= link_to "Ascending", {:order => "asc", :sort => params["sort"],},  class: "btn btn-outline-secondary" %></button>
+      <% end %>
+      <% if params["order"] == "asc" %>
+        <button class="btn" aria-haspopup="true" aria-expanded="false"><%= link_to "Descending", {:order => "desc", :sort => params["sort"],}, class: "btn btn-outline-secondary" %></button>
+      <% end %>
+    <% end %>
   <% end %>
-  <% if params["order"] == "asc" %>
-    <%= link_to "Descending", {:order => "desc", :sort => params["sort"],} %>
-  <% end %>
-<% end %>
+</div>
+
 </p>
 
 <!-- render a list of user's item -->
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Name</th>
-      <th>User</th>
-      <th>Date added</th>
-      <th> Popularity</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @user_items.each do |item| %>
-      <% if !item.trade_established %>
-        <tr>
-          <td><%= item.category %></td>
-          <td><%= item.name %></td>
-          <td><%= item.user_id %></td>
-          <td><%= item.created_at %></td>
-          <td><%= item.popularity %></td>
-          <td><%= link_to 'Show', item %></td>
-          <!-- only give option to edit if user is logged in -->
-          <% if logged_in? && current_user.id == @user.id %>
-            <td><%= link_to 'Edit', edit_item_path(item) %></td>
-            <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-        </tr>
+<div class="card" style="width: 100%;">
+  <span class="text-center card-header bg-light navbar-brand mr-0">Items</span>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <% @user_items.each do |item| %>
+        <% if !item.trade_established %>
+          <div class="container">
+            <div class="card mb-3 col-md-6 offset-md-3 pl-0 pr-0">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <% if !item.images.empty? %>
+                    <div id='MyCarousel' class="carousel slide carousel-fade" data-ride="carousel">
+                      <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active card-img-left">
+                          <%= image_tag(item.images.first, style: 'height: 100%; width: 100%; object-fit: contain') %>
+                        </div>
+                        <% item.images.drop(1).each do |photo| %>
+                          <div class="carousel-item card-img-left">
+                            <%= image_tag(photo, style: 'height: 100%; width: 100%; object-fit: contain') %>
+                          </div>
+                        <% end %>
+                      </div>
+                      <ol class="carousel-indicators">
+                        <% item.images.each_with_index do |photo, n| %>
+                          <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+                        <% end %>
+                      </ol>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <% provide(:title, item.name) %>
+                    <h4 class="card-title"><%=  item.name %></h4>
+                    <p class="card-text">Category: <%= item.category %></p>
+                    <p class="card-text">User: <%= @user.name %></p>
+                    <p class="card-text">Date Added: <%= item.created_at %></p>
+                    <p class="card-text">Popularity: <%= item.popularity %></p>
+                  </div>
+                  <button class="btn ml-2" aria-haspopup="true" aria-expanded="false"><%= link_to 'Show', item, class: "btn btn-outline-primary" %></button>
+                  <button class="btn" aria-haspopup="true" aria-expanded="false"><%= link_to 'Edit', edit_item_path(item), class: "btn btn-outline-primary" %></button>
+                  <button class="btn" aria-haspopup="true" aria-expanded="false"><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </li>
+  </ul>
+</div>
 
 <p>
-<strong>Trade History </strong>
   <% if logged_in? %>
-   <table>
-      <tbody>
-        <% current_user.items.each do |item| %>
-          <tr>
-            <% if item.trade_established %>
-              <td><%= link_to "#{item.name}", item %></td>
-              <th> Traded with </th>
-              <% item_traded = item.traded_item %>
-              <td><%= link_to "#{item_traded.name}", item_traded %></td>
-            <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+    <div class="card" style="width: 100%;">
+      <span class="text-center card-header bg-light navbar-brand mr-0">Trade History</span>
+      <table class="table">
+        <tbody>
+          <% User.find(params["id"]).items.each do |item| %>
+            <tr>
+              <% if item.trade_established %>
+                <td> <%= link_to "#{item.name}", item, class: "text-info" %> <td>
+                <th> Traded with </th>
+                <% item_traded = item.traded_item %>
+                <td> <%= link_to "#{item_traded.name}", item_traded, class: "text-info"  %> </td>
+                <th> Belonging To </th>
+                <% owner = User.find(item_traded.user_id) %>
+                <td> <%= link_to "#{owner.name}", owner, class: "text-info"  %> </td>
+                <th> at </th>
+                <% item_t = item.traded_item_time %>
+                <% item_t_traded_with = item_traded.traded_item_time %>
+                <td> <%= item.compare(item_t['created_at'], item_t_traded_with['created_at'])%> </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
 </p>
