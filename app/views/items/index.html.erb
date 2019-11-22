@@ -1,49 +1,75 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Items</h1>
-
 <p>
-<strong>Sort By </strong>
-<li><%= link_to "Name", {:order => session[:order], :sort => "name"} %></li>
-<li><%= link_to "User ID", {:order => session[:order], :sort => "user_id"} %></li>
-<li><%= link_to "Category", {:order => session[:order], :sort => "category"} %></li>
-<li><%= link_to "Date", {:order => session[:order], :sort => "created_at"} %></li>
-<li><%= link_to "Popularity", {:order => session[:order], :sort => "popularity"} %></li>
-<br>
-<% if params["sort"].present? %>
-  <% if params["order"] == "asc" %>
-    <%= link_to "Sort descending instead", {:order => "desc", :sort => params["sort"],} %>
-  <% else %>
-    <%= link_to "Sort ascending instead", {:order => "asc", :sort => params["sort"],} %>
-  <% end %>
-<% end %>
+  <div class="text-center">
+    <button class= "btn btn-outline-secondary dropdown-toggle mx-2" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Sort By
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li><%= link_to "Name", {:order => session[:order], :sort => "name",}, class: "dropdown-item" %></li>
+      <li><%= link_to "User ID", {:order => session[:order], :sort => "user_id",}, class: "dropdown-item" %></li>
+      <li><%= link_to "Category", {:order => session[:order], :sort => "category",}, class: "dropdown-item" %></li>
+      <li><%= link_to "Date", {:order => session[:order], :sort => "created_at",}, class: "dropdown-item" %></li>
+      <li><%= link_to "Popularity", {:order => session[:order], :sort => "popularity",}, class: "dropdown-item" %></li>
+    </div>
+    <% if params["sort"].present? %>
+      <% if params["order"] == "desc" %>
+        <button  class= "btn px-2 py-0" aria-haspopup="true" aria-expanded="false"><%= link_to "Ascending", {:order => "asc", :sort => params["sort"],},  class: "btn btn-outline-secondary" %></button>
+      <% end %>
+      <% if params["order"] == "asc" %>
+        <button class="btn px-2 py-0" aria-haspopup="true" aria-expanded="false"><%= link_to "Descending", {:order => "desc", :sort => params["sort"],}, class: "btn btn-outline-secondary" %></button>
+      <% end %>
+    <% end %>
+    <button class="btn px-2 py-0" aria-haspopup="true" aria-expanded="false"><%= link_to 'New Item', new_item_path, class: "btn btn-outline-primary" %></button>
+  </div>
 </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Name</th>
-      <th>User</th>
-      <th>Date added</th>
-      <th> Popularity</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.category %></td>
-        <td><%= item.name %></td>
-        <td><%= item.user_id %></td>
-        <td><%= item.created_at %></td>
-        <td><%= item.popularity %></td>
-        <td><%= link_to 'Show', item %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<%= link_to 'New Item', new_item_path %>
+<div class="card" style="width: 100%;">
+  <div class="text-center card-header bg-light navbar-brand mr-0">
+    Items
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <% @items.each do |item| %>
+        <a href="/items/<%= item.id %>" class="text-dark" style="text-decoration: none">
+          <div class="container">
+            <div class="card mb-3 col-md-6 offset-md-3 pl-0 pr-0">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <% if !item.images.empty? %>
+                    <div id="MyCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+                      <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                          <%= image_tag(item.images.first, style: 'height: 100%; width: 100%; object-fit: contain') %>
+                        </div>
+                        <% item.images.drop(1).each do |photo| %>
+                          <div class="carousel-item">
+                            <%= image_tag(photo, style: 'height: 100%; width: 100%; object-fit: contain') %>
+                          </div>
+                        <% end %>
+                      </div>
+                      <ol class="carousel-indicators">
+                        <% item.images.each_with_index do |photo, n| %>
+                          <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+                        <% end %>
+                      </ol>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <% provide(:title, item.name) %>
+                    <h4 class="card-title mt-2"><%= item.name %></h5>
+                    <p class="card-text">Category: <%= item.category %></p>
+                    <% owner = User.find(item.user_id) %>
+                    <p class="card-text">User: <%= owner.name %></p>
+                    <p class="card-text">Date Added: <%= item.created_at %></p>
+                    <p class="card-text">Popularity: <%= item.popularity %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      <% end %> 
+    </li>
+  </ul>
+</div>

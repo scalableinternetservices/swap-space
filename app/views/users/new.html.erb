@@ -1,24 +1,25 @@
 
 <% provide(:title, 'Sign up') %>
 
-<h1>Sign up</h1>
+<h1 class="text-center mt-5">Sign up</h1>
 
 <div>
     <%= form_for(@user, url: signup_path) do |f| %>
         <%= render 'shared/error_messages' %>
-
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control'%>
-
-        <%= f.label :email %>
-        <%= f.text_field :email, class: 'form-control' %>
-
-        <%= f.label :password %>
-        <%= f.password_field :password, class: 'form-control' %>
-
-        <%= f.label :password_confirmation, 'Confirmation' %>
-        <%= f.password_field :passwrod_confirmation, class: 'form-control' %>
-
-        <%= f.submit 'Create my account' %>
+        <div class="form-group">
+            <%= f.text_field :name, class: 'form-control col-md-4 offset-md-4', placeholder: "Name"%>
+        </div>
+        <div class="form-group">
+            <%= f.text_field :email, class: 'form-control col-md-4 offset-md-4', placeholder: "Email Address" %>
+        </div>
+        <div class="form-group">
+            <%= f.password_field :password, class: 'form-control col-md-4 offset-md-4', placeholder: "Password" %>
+        </div>
+        <div class="form-group">
+            <%= f.password_field :password_confirmation, class: 'form-control col-md-4 offset-md-4', placeholder: "Confirm Password" %>
+        </div>
+        <div class="form-group text-center">
+            <button class="btn"><%= f.submit 'Create my account', class: "btn btn-outline-primary" %></button>
+        </div>
     <% end %>
 </div>
