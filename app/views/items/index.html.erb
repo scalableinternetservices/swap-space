@@ -72,4 +72,14 @@
       <% end %> 
     </li>
   </ul>
+
+  <% if @prev_page != nil %>
+    <%= link_to "#{@prev_page}", items_path(page_num: @prev_page) %>
+  <% end %>
+  
+  <span> <%= params['page_num'] || 1 %> </span>
+
+  <% if @next_page != nil %>
+    <%= link_to "#{@next_page}", items_path(page_num: @next_page) %>
+  <% end %>
 </div>
