@@ -67,3 +67,6 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 
 gem 'jasny-bootstrap-rails'
+
+# gem for inserting multiple rows in one SQL statement
+gem 'activerecord-import'
