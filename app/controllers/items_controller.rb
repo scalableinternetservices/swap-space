@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   before_action :has_not_been_traded_assertion, only: [:edit, :update, :add_trade, :cancel_bid, :destroy]
   before_action :bid_has_not_been_traded_assertion, only: [:add_trade, :cancel_bid]
 
+
   # GET /items
   # GET /items.json
   def index

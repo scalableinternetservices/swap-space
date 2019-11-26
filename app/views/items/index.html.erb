@@ -28,47 +28,49 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
       <% @items.each do |item| %>
-        <a href="/items/<%= item.id %>" class="text-dark" style="text-decoration: none">
-          <div class="container">
-            <div class="card mb-3 col-md-6 offset-md-3 pl-0 pr-0">
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <% if !item.images.empty? %>
-                    <div id="MyCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-                      <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                          <%= image_tag(item.images.first, style: 'height: 100%; width: 100%; object-fit: contain') %>
-                        </div>
-                        <% item.images.drop(1).each do |photo| %>
-                          <div class="carousel-item">
-                            <%= image_tag(photo, style: 'height: 100%; width: 100%; object-fit: contain') %>
+        <% cache(item) do %>
+          <a href="/items/<%= item.id %>" class="text-dark" style="text-decoration: none">
+            <div class="container">
+              <div class="card mb-3 col-md-6 offset-md-3 pl-0 pr-0">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <% if !item.images.empty? %>
+                      <div id="MyCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                          <div class="carousel-item active">
+                            <%= image_tag(item.images.first, style: 'height: 100%; width: 100%; object-fit: contain') %>
                           </div>
-                        <% end %>
+                          <% item.images.drop(1).each do |photo| %>
+                            <div class="carousel-item">
+                              <%= image_tag(photo, style: 'height: 100%; width: 100%; object-fit: contain') %>
+                            </div>
+                          <% end %>
+                        </div>
+                        <ol class="carousel-indicators">
+                          <% item.images.each_with_index do |photo, n| %>
+                            <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+                          <% end %>
+                        </ol>
                       </div>
-                      <ol class="carousel-indicators">
-                        <% item.images.each_with_index do |photo, n| %>
-                          <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
-                        <% end %>
-                      </ol>
+                    <% end %>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <% provide(:title, item.name) %>
+                      <h4 class="card-title mt-2"><%= item.name %></h5>
+                      <p class="card-text">Category: <%= item.category %></p>
+                      <% owner = User.find(item.user_id) %>
+                      <p class="card-text">User: <%= owner.name %></p>
+                      <p class="card-text">Description: <%= item.description%></p>
+                      <p class="card-text">Date Added: <%= item.created_at %></p>
+                      <p class="card-text">Popularity: <%= item.popularity %></p>
                     </div>
-                  <% end %>
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <% provide(:title, item.name) %>
-                    <h4 class="card-title mt-2"><%= item.name %></h5>
-                    <p class="card-text">Category: <%= item.category %></p>
-                    <% owner = User.find(item.user_id) %>
-                    <p class="card-text">User: <%= owner.name %></p>
-                    <p class="card-text">Description: <%= item.description%></p>
-                    <p class="card-text">Date Added: <%= item.created_at %></p>
-                    <p class="card-text">Popularity: <%= item.popularity %></p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </a>
+          </a>
+        <% end %>
       <% end %> 
     </li>
   </ul>

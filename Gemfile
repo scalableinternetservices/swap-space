@@ -70,3 +70,7 @@ gem 'jasny-bootstrap-rails'
 
 # gem for inserting multiple rows in one SQL statement
 gem 'activerecord-import'
+
+gem 'actionpack-page_caching'
+
+gem 'actionpack-action_caching'
