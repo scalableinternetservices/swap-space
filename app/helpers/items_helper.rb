@@ -7,7 +7,7 @@ module ItemsHelper
             all_item = all_item.left_outer_joins(:bid_by)
                 .group('items.id')
                 .order("1 #{rev ? 'DESC' : 'ASC'}")
-                .select('COUNT(*) AS popularity, items.*')
+                .select('COUNT(bid_bies_items.id) AS popularity, items.*')
         else 
             all_item = all_item.order(sort_by => rev ? :desc : :asc)
         end
