@@ -4,8 +4,10 @@ module ItemsHelper
         # sort_by is a string
         # rev is a boolean to select if the list is reversed
         if sort_by == 'popularity'
-            all_item = all_item.sort_by(&:popularity)
-            all_item = rev ? all_item.reverse : all_item
+            all_item = all_item.left_outer_joins(:bid_by)
+                .group('items.id')
+                .order("1 #{rev ? 'DESC' : 'ASC'}")
+                .select('COUNT(*) AS popularity, items.*')
         else 
             all_item = all_item.order(sort_by => rev ? :desc : :asc)
         end
