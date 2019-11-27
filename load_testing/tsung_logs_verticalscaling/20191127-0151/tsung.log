@@ -1,0 +1,234 @@
+# stats: dump at 1574819517
+stats: users 0 0
+stats: {freemem,"tsung_controller@ip-172-31-23-181"} 1 3506.01171875 0 3506.01171875 3506.01171875 0 0
+stats: {load,"tsung_controller@ip-172-31-23-181"} 1 0.0 0 0.0 0.0 0 0
+stats: {cpu,"tsung_controller@ip-172-31-23-181"} 1 0.4440438110962662 0 0.4440438110962662 0.4440438110962662 0 0
+stats: users_count 0 0
+stats: finish_users_count 0 0
+# stats: dump at 1574819527
+stats: users 1 1
+stats: {freemem,"tsung_controller@ip-172-31-23-181"} 1 3508.5546875 0.0 3508.5546875 3506.01171875 3506.01171875 1
+stats: {load,"tsung_controller@ip-172-31-23-181"} 1 0.0 0.0 0.0 0.0 0.0 1
+stats: {recvpackets,"tsung_controller@ip-172-31-23-181"} 1 0 0 0 0 0 0
+stats: {sentpackets,"tsung_controller@ip-172-31-23-181"} 1 0 0 0 0 0 0
+stats: {cpu,"tsung_controller@ip-172-31-23-181"} 1 0.1 0.0 0.4440438110962662 0.1 0.4440438110962662 1
+stats: users_count 1 1
+stats: finish_users_count 0 0
+stats: request 4 77.43475000000001 98.14146251043694 247.333 16.634 0 0
+stats: connect 1 18.953 0.0 18.953 18.953 0 0
+stats: page 4 77.43475000000001 98.14146251043694 247.333 16.634 0 0
+stats: 302 1 1
+stats: 200 2 2
+stats: size_rcv 10722 10722
+stats: size_sent 137837 137837
+stats: connected 1 1
+stats: 500 1 1
+# stats: dump at 1574819537
+stats: users 2 3
+stats: {freemem,"tsung_controller@ip-172-31-23-181"} 1 3507.35546875 0.0 3508.5546875 3506.01171875 3507.283203125 2
+stats: {load,"tsung_controller@ip-172-31-23-181"} 1 0.0 0.0 0.0 0.0 0.0 2
+stats: {recvpackets,"tsung_controller@ip-172-31-23-181"} 1 28 0 28 28 0.0 1
+stats: {sentpackets,"tsung_controller@ip-172-31-23-181"} 1 30 0 30 30 0.0 1
+stats: {cpu,"tsung_controller@ip-172-31-23-181"} 1 0.39920159680638717 0.0 0.4440438110962662 0.1 0.2720219055481331 2
+stats: session 1 14239.75 0 14239.75 14239.75 0 0
+stats: users_count 2 3
+stats: finish_users_count 1 1
+stats: request 27 45.236740740740736 62.18953508702403 250.777 2.771 77.43475000000001 4
+stats: connect 2 1.0975 0.056499999999999995 18.953 1.041 18.953 1
+stats: page 22 55.53913636363638 67.15369677382249 250.777 2.771 77.43475000000001 4
+stats: 302 4 5
+stats: 200 18 20
+stats: size_rcv 241538 252260
+stats: size_sent 286869 424706
+stats: connected 1 2
+stats: 500 0 1
+stats: 404 5 5
+# stats: dump at 1574819547
+stats: users 0 3
+stats: {freemem,"tsung_controller@ip-172-31-23-181"} 1 3505.91796875 0.0 3508.5546875 3505.91796875 3507.3072916666665 3
+stats: {load,"tsung_controller@ip-172-31-23-181"} 1 0.0 0.0 0.0 0.0 0.0 3
+stats: {recvpackets,"tsung_controller@ip-172-31-23-181"} 1 329.0 0.0 329 28 14.0 2
+stats: {sentpackets,"tsung_controller@ip-172-31-23-181"} 1 226.0 0.0 226 30 15.0 2
+stats: {cpu,"tsung_controller@ip-172-31-23-181"} 1 0.8016032064128256 0.0 0.8016032064128256 0.1 0.3144151359675511 3
+stats: session 2 10930.9175 1737.7695000000003 14239.75 9193.148 14239.75 1
+stats: users_count 0 3
+stats: finish_users_count 2 3
+stats: request 35 38.29611428571427 24.78145850748836 250.777 2.771 49.39132258064516 31
+stats: connect 0 0 0 18.953 1.041 7.049333333333333 3
+stats: page 25 53.64108000000001 31.167423372386754 250.777 2.771 58.90769230769232 26
+stats: 302 10 15
+stats: 200 25 45
+stats: size_rcv 394836 647096
+stats: size_sent 22270 446976
+stats: connected -2 0
+stats: 500 0 1
+stats: 404 0 5
+# stats: dump at 1574819557
+stats: users 2 3
+stats: {freemem,"tsung_controller@ip-172-31-23-181"} 1 3505.30078125 0.0 3508.5546875 3505.30078125 3506.9599609375 4
+stats: {load,"tsung_controller@ip-172-31-23-181"} 1 0.0 0.0 0.0 0.0 0.0 4
+stats: {recvpackets,"tsung_controller@ip-172-31-23-181"} 1 256.0 0.0 329 28 119.0 3
+stats: {sentpackets,"tsung_controller@ip-172-31-23-181"} 1 166.0 0.0 226 30 85.33333333333333 3
+stats: {cpu,"tsung_controller@ip-172-31-23-181"} 1 0.501002004008016 0.0 0.8016032064128256 0.1 0.4362121535788697 4
+stats: session 0 0 0 14239.75 9193.148 12033.861666666666 3
+stats: users_count 2 5
+stats: finish_users_count 0 3
+stats: request 3 86.714 112.80063749228843 250.777 2.771 43.507499999999986 66
+stats: connect 2 1.3215 0.07849999999999985 18.953 1.041 7.049333333333333 3
+stats: page 3 86.714 112.80063749228843 250.777 2.771 56.32601960784314 51
+stats: 302 1 16
+stats: 200 2 47
+stats: size_rcv 8671 655767
+stats: newphase 1 1
+stats: size_sent 2096 449072
+stats: connected 2 2
+stats: 500 0 1
+stats: 404 0 5
+# stats: dump at 1574819567
+stats: users 16 16
+stats: {freemem,"tsung_controller@ip-172-31-23-181"} 1 3505.3125 0.0 3508.5546875 3505.30078125 3506.628125 5
+stats: {load,"tsung_controller@ip-172-31-23-181"} 1 0.0 0.0 0.0 0.0 0.0 5
+stats: {recvpackets,"tsung_controller@ip-172-31-23-181"} 1 54.0 0.0 329 28 153.25 4
+stats: {sentpackets,"tsung_controller@ip-172-31-23-181"} 1 56.0 0.0 226 30 105.5 4
+stats: {cpu,"tsung_controller@ip-172-31-23-181"} 1 0.39920159680638717 0.0 0.8016032064128256 0.1 0.449170123664699 5
+stats: session 0 0 0 14239.75 9193.148 12033.861666666666 3
+stats: users_count 14 19
+stats: finish_users_count 0 3
+stats: request 89 67.89058426966297 91.11308674460842 329.557 2.719 45.38604347826085 69
+stats: connect 14 1.2885714285714283 0.14517905903977155 18.953 0.906 4.7582 5
+stats: page 81 74.60213580246912 94.08821094855654 329.557 2.719 58.014240740740746 54
+stats: 302 24 40
+stats: 200 54 101
+stats: size_rcv 615411 1271178
+stats: newphase 0 1
+stats: size_sent 1678068 2127140
+stats: connected 14 16
+stats: 500 6 7
+stats: 404 5 10
+# stats: dump at 1574819577
+stats: users 25 25
+stats: {freemem,"tsung_controller@ip-172-31-23-181"} 1 3498.30859375 0.0 3508.5546875 3498.30859375 3506.4088541666665 6
+stats: {load,"tsung_controller@ip-172-31-23-181"} 1 0.0 0.0 0.0 0.0 0.0 6
+stats: {recvpackets,"tsung_controller@ip-172-31-23-181"} 1 1064.0 0.0 1064 28 133.4 5
+stats: {sentpackets,"tsung_controller@ip-172-31-23-181"} 1 801.0 0.0 801 30 95.6 5
+stats: {cpu,"tsung_controller@ip-172-31-23-181"} 1 2.7 0.0 2.7 0.1 0.44084203585498033 6
+stats: session 4 12379.892749999999 3667.759251633507 18085.153 8100.443 12033.861666666666 3
+stats: users_count 13 32
+stats: finish_users_count 4 7
+stats: request 231 49.763484848484815 60.07010623360371 329.557 2.339 58.062651898734195 158
+stats: connect 13 1.2465384615384614 0.2408403925311454 18.953 0.906 2.2016315789473686 19
+stats: page 184 62.366554347826096 66.40457929671062 334.0 2.339 67.96697777777777 135
+stats: 302 37 77
+stats: 200 162 263
+stats: size_rcv 2322045 3593223
+stats: newphase 0 1
+stats: size_sent 1765795 3892935
+stats: connected 9 25
+stats: 500 7 14
+stats: 404 25 35
+# stats: dump at 1574819587
+stats: users 16 26
+stats: {freemem,"tsung_controller@ip-172-31-23-181"} 1 3488.390625 0.0 3508.5546875 3488.390625 3505.2516741071427 7
+stats: {load,"tsung_controller@ip-172-31-23-181"} 1 0.0703125 0.0 0.0703125 0.0 0.0 7
+stats: {recvpackets,"tsung_controller@ip-172-31-23-181"} 1 2392.0 0.0 2392 28 288.5 6
+stats: {sentpackets,"tsung_controller@ip-172-31-23-181"} 1 1589.0 0.0 1589 30 213.16666666666666 6
+stats: {cpu,"tsung_controller@ip-172-31-23-181"} 1 6.653426017874876 0.0 6.653426017874876 0.1 0.7635788878756975 7
+stats: session 10 19496.016099999997 4342.115368769247 26788.602 8100.443 12231.593714285713 7
+stats: users_count 1 33
+stats: finish_users_count 10 17
+stats: request 226 41.15618584070798 41.557158292051156 329.557 2.245 53.13435475578405 389
+stats: connect 1 1.209 0.0 18.953 0.906 1.813625 32
+stats: page 168 55.443928571428614 48.30181735200866 334.0 2.339 64.73663949843261 319
+stats: 302 27 104
+stats: 200 159 422
+stats: size_rcv 2402714 5995937
+stats: newphase 0 1
+stats: size_sent 947741 4840676
+stats: connected -9 16
+stats: 500 3 17
+stats: 404 37 72
+# stats: dump at 1574819597
+stats: users 4 26
+stats: {freemem,"tsung_controller@ip-172-31-23-181"} 1 3492.9921875 0.0 3508.5546875 3488.390625 3503.14404296875 8
+stats: {load,"tsung_controller@ip-172-31-23-181"} 1 0.05859375 0.0 0.0703125 0.0 0.0087890625 8
+stats: {recvpackets,"tsung_controller@ip-172-31-23-181"} 1 1941.0 0.0 2392 28 589.0 7
+stats: {sentpackets,"tsung_controller@ip-172-31-23-181"} 1 1227.0 0.0 1589 30 409.7142857142857 7
+stats: {cpu,"tsung_controller@ip-172-31-23-181"} 1 5.4945054945054945 0.0 6.653426017874876 0.1 1.4998097791255949 8
+stats: session 12 19631.758833333337 3699.60777212267 26788.602 8100.443 16504.783352941173 17
+stats: users_count 0 33
+stats: finish_users_count 12 29
+stats: request 85 31.29325882352942 26.384447617378445 329.557 2.245 48.73262113821138 615
+stats: connect 0 0 0 18.953 0.906 1.7953030303030304 33
+stats: page 57 46.98701754385966 33.62384205923311 334.0 2.339 61.530940451745394 487
+stats: 302 19 123
+stats: 200 56 478
+stats: size_rcv 790754 6786691
+stats: newphase 0 1
+stats: size_sent 53502 4894178
+stats: connected -12 4
+stats: 500 0 17
+stats: 404 10 82
+# stats: dump at 1574819607
+stats: users 2 26
+stats: {freemem,"tsung_controller@ip-172-31-23-181"} 1 3494.45703125 0.0 3508.5546875 3488.390625 3502.016059027778 9
+stats: {load,"tsung_controller@ip-172-31-23-181"} 1 0.05078125 0.0 0.0703125 0.0 0.014322916666666666 9
+stats: {recvpackets,"tsung_controller@ip-172-31-23-181"} 1 516.0 0.0 2392 28 758.0 8
+stats: {sentpackets,"tsung_controller@ip-172-31-23-181"} 1 356.0 0.0 1589 30 511.875 8
+stats: {cpu,"tsung_controller@ip-172-31-23-181"} 1 1.0040160642570282 0.0 6.653426017874876 0.1 1.9436648586122505 9
+stats: session 2 27789.3655 1995.1395000000011 29784.505 8100.443 17798.70424137931 29
+stats: users_count 0 33
+stats: finish_users_count 2 31
+stats: request 22 33.73495454545455 25.637100150646866 329.557 2.245 46.614984285714286 700
+stats: connect 0 0 0 18.953 0.906 1.7953030303030304 33
+stats: page 15 49.50893333333335 32.418451565873546 334.0 2.339 60.0070367647059 544
+stats: 302 5 128
+stats: 200 15 493
+stats: size_rcv 218592 7005283
+stats: newphase 0 1
+stats: size_sent 13850 4908028
+stats: connected -2 2
+stats: 500 0 17
+stats: 404 2 84
+# stats: dump at 1574819617
+stats: users 0 26
+stats: {freemem,"tsung_controller@ip-172-31-23-181"} 1 3496.40234375 0.0 3508.5546875 3488.390625 3501.26015625 10
+stats: {load,"tsung_controller@ip-172-31-23-181"} 1 0.0390625 0.0 0.0703125 0.0 0.01796875 10
+stats: {recvpackets,"tsung_controller@ip-172-31-23-181"} 1 149.0 0.0 2392 28 731.1111111111111 9
+stats: {sentpackets,"tsung_controller@ip-172-31-23-181"} 1 102.0 0.0 1589 30 494.55555555555554 9
+stats: {cpu,"tsung_controller@ip-172-31-23-181"} 1 0.5 0.0 6.653426017874876 0.1 1.849699979176728 10
+stats: session 2 34915.034 811.1500000000015 35726.184 8100.443 18443.263032258063 31
+stats: users_count 0 33
+stats: finish_users_count 2 33
+stats: request 4 10.918 5.235074975585355 329.557 2.245 46.222518005540174 722
+stats: connect 0 0 0 18.953 0.906 1.7953030303030304 33
+stats: page 2 21.930500000000002 8.7875 334.0 2.339 59.72533452593919 559
+stats: 302 1 129
+stats: 200 2 495
+stats: size_rcv 12626 7017909
+stats: newphase 0 1
+stats: size_sent 2716 4910744
+stats: connected -2 0
+stats: 500 0 17
+stats: 404 1 85
+# stats: dump at 1574819617
+stats: users 0 26
+stats: {freemem,"tsung_controller@ip-172-31-23-181"} 0 0 0 3508.5546875 3488.390625 3500.818536931818 11
+stats: {load,"tsung_controller@ip-172-31-23-181"} 0 0 0 0.0703125 0.0 0.019886363636363636 11
+stats: {recvpackets,"tsung_controller@ip-172-31-23-181"} 0 0 0 2392 28 672.9 10
+stats: {sentpackets,"tsung_controller@ip-172-31-23-181"} 0 0 0 1589 30 455.3 10
+stats: {cpu,"tsung_controller@ip-172-31-23-181"} 0 0 0 6.653426017874876 0.1 1.7269999810697527 11
+stats: session 0 0 0 35726.184 8100.443 19441.55218181818 33
+stats: users_count 0 33
+stats: finish_users_count 0 33
+stats: request 0 0 0 329.557 2.245 46.02800275482094 726
+stats: connect 0 0 0 18.953 0.906 1.7953030303030304 33
+stats: page 0 0 0 334.0 2.339 59.590593582887706 561
+stats: 302 0 129
+stats: 200 0 495
+stats: size_rcv 0 7017909
+stats: newphase 0 1
+stats: size_sent 0 4910744
+stats: connected 0 0
+stats: 500 0 17
+stats: 404 0 85
+EndMonitor:{1574,819617,750859}
