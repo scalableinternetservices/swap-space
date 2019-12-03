@@ -1,0 +1,451 @@
+
+=INFO REPORT==== 3-Dec-2019::08:04:11 ===
+    ts_config_server:(5:<0.102.0>) Config server started, logdir is "/home/ec2-user/.tsung/log/20191203-0804"
+ 
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+              ts_mon:(5:<0.83.0>) starting monitor, global 
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+           ts_config:(5:<0.102.0>) Reading config file: swapspace-8xlarge.xml
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+      ts_config_http:(4:<0.102.0>) Get user agent: 100 "Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4" 
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+           ts_config:(5:<0.102.0>) Session name for id 1 is "http-example"
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+    ts_config_server:(4:<0.102.0>) SYSINFO:Tsung version: 1.7.0
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+    ts_config_server:(4:<0.102.0>) SYSINFO:Erlang version: Erlang/OTP 20 [erts-9.1] [source] [64-bit] [smp:1:1] [ds:1:1:10] [async-threads:8] [hipe] [kernel-poll:true]
+
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+    ts_config_server:(4:<0.102.0>) SYSINFO:System architecture x86_64-unknown-linux-gnu
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+    ts_config_server:(4:<0.102.0>) SYSINFO:Current path: /usr/local/lib/tsung/tsung-1.7.0/ebin/tsung.beam
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+              ts_mon:(5:<0.103.0>) Activate clients with text backend
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+              ts_mon:(5:<0.103.0>) Starting tsung clients on hosts: [localhost]
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+    ts_config_server:(5:<0.102.0>) Start a launcher on the controller beam localhost
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+  ts_launcher_static:(5:<0.154.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+         ts_launcher:(5:<0.155.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+    ts_config_server:(5:<0.102.0>) New arrival phase 1 for client "localhost" (last ? true): will start 3 users
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+    ts_config_server:(5:<0.102.0>) New arrival phase 2 for client "localhost" (last ? true): will start 30 users
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+    ts_config_server:(5:<0.102.0>) New arrival phase 3 for client "localhost" (last ? true): will start 60 users
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+    ts_config_server:(5:<0.102.0>) New arrival phase 4 for client "localhost" (last ? true): will start 120 users
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+    ts_config_server:(5:<0.102.0>) New arrival phase 5 for client "localhost" (last ? true): will start 240 users
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+         ts_launcher:(5:<0.155.0>) Expected duration of first phase: 30.0 sec (3 users) 
+
+=INFO REPORT==== 3-Dec-2019::08:04:12 ===
+         ts_launcher:(5:<0.155.0>) Activate launcher (3 users) in 3220 msec 
+
+=INFO REPORT==== 3-Dec-2019::08:04:51 ===
+         ts_launcher:(5:<0.155.0>) Phase duration exceeded, but not all users were launched (1 users, 33.3% of phase)
+
+=INFO REPORT==== 3-Dec-2019::08:04:51 ===
+         ts_launcher:(5:<0.155.0>) Start a new arrival phase (30 users, 0.001); expected duration=30.0 sec
+
+=INFO REPORT==== 3-Dec-2019::08:05:22 ===
+         ts_launcher:(5:<0.155.0>) Phase duration exceeded, but not all users were launched (10 users, 33.3% of phase)
+
+=INFO REPORT==== 3-Dec-2019::08:05:22 ===
+         ts_launcher:(5:<0.155.0>) Start a new arrival phase (60 users, 0.002); expected duration=30.0 sec
+
+=INFO REPORT==== 3-Dec-2019::08:05:49 ===
+         ts_launcher:(4:<0.155.0>) Need to wait 3.055 sec before changing phase, going to sleep
+
+=INFO REPORT==== 3-Dec-2019::08:05:52 ===
+         ts_launcher:(5:<0.155.0>) Waking up
+
+=INFO REPORT==== 3-Dec-2019::08:05:52 ===
+         ts_launcher:(5:<0.155.0>) Start a new arrival phase (120 users, 0.004); expected duration=30.0 sec
+
+=INFO REPORT==== 3-Dec-2019::08:06:18 ===
+           ts_search:(5:<0.290.0>) Dyn Var: no Match (varname=first_item), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:18 ===
+           ts_search:(5:<0.290.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:21 ===
+         ts_launcher:(4:<0.155.0>) Need to wait 0.947 sec before changing phase, going to sleep
+
+=INFO REPORT==== 3-Dec-2019::08:06:22 ===
+         ts_launcher:(5:<0.155.0>) Waking up
+
+=INFO REPORT==== 3-Dec-2019::08:06:22 ===
+         ts_launcher:(5:<0.155.0>) Start a new arrival phase (240 users, 0.008); expected duration=30.0 sec
+
+=INFO REPORT==== 3-Dec-2019::08:06:24 ===
+           ts_search:(5:<0.290.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:25 ===
+           ts_search:(5:<0.401.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:26 ===
+           ts_search:(5:<0.353.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:28 ===
+           ts_search:(5:<0.381.0>) Dyn Var: no Match (varname=first_item), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:32 ===
+           ts_search:(5:<0.410.0>) Dyn Var: no Match (varname=first_item), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:34 ===
+           ts_search:(5:<0.443.0>) Dyn Var: no Match (varname=first_item), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:34 ===
+           ts_search:(5:<0.343.0>) Dyn Var: no Match (varname=first_item), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:34 ===
+           ts_search:(5:<0.457.0>) Dyn Var: no Match (varname=authenticity_token), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:34 ===
+           ts_client:(5:<0.457.0>) Stop in state wait_ack, reason= {{badmatch,
+                                                                     {ok,
+                                                                      <<>>}},
+                                                                    [{erl_eval,
+                                                                      expr,3,
+                                                                      []}]}
+
+=ERROR REPORT==== 3-Dec-2019::08:06:34 ===
+** State machine <0.457.0> terminating 
+** Last message in was {tcp,#Port<0.2394>,
+                            <<"HTTP/1.1 500 Internal Server Error\r\nContent-Type: text/html; charset=UTF-8\r\nDate: Tue, 03 Dec 2019 08:06:34 GMT\r\nServer: nginx/1.16.1\r\nX-Request-Id: e88c7b75-1a08-4275-b11a-bbb08be58bc1\r\nX-Runtime: 0.055780\r\nContent-Length: 1635\r\nConnection: keep-alive\r\n\r\n<!DOCTYPE html>\n<html>\n<head>\n  <title>We're sorry, but something went wrong (500)</title>\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n  <style>\n  .rails-default-error-page {\n    background-color: #EFEFEF;\n    color: #2E2F30;\n    text-align: center;\n    font-family: arial, sans-serif;\n    margin: 0;\n  }\n\n  .rails-default-error-page div.dialog {\n    width: 95%;\n    max-width: 33em;\n    margin: 4em auto 0;\n  }\n\n  .rails-default-error-page div.dialog > div {\n    border: 1px solid #CCC;\n    border-right-color: #999;\n    border-left-color: #999;\n    border-bottom-color: #BBB;\n    border-top: #B00100 solid 4px;\n    border-top-left-radius: 9px;\n    border-top-right-radius: 9px;\n    background-color: white;\n    padding: 7px 12% 0;\n    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);\n  }\n\n  .rails-default-error-page h1 {\n    font-size: 100%;\n    color: #730E15;\n    line-height: 1.5em;\n  }\n\n  .rails-default-error-page div.dialog > p {\n    margin: 0 0 1em;\n    padding: 1em;\n    background-color: #F7F7F7;\n    border: 1px solid #CCC;\n    border-right-color: #999;\n    border-left-color: #999;\n    border-bottom-color: #999;\n    border-bottom-left-radius: 4px;\n    border-bottom-right-radius: 4px;\n    border-top-color: #DADADA;\n    color: #666;\n    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);\n  }\n  </style>\n</head>\n\n<body class=\"rails-default-error-page\">\n  <!-- This file lives in public/500.html -->\n  <div class=\"dialog\">\n    <div>\n      <h1>We're sorry, but something went wrong.</h1>\n    </div>\n    <p>If you are the application owner check the logs for more information.</p>\n  </div>\n</body>\n</html>\n">>}
+** When State == wait_ack
+**      Data  == {state_rcv,#Port<0.2394>,
+                  {{0,0,0,0},0},
+                  undefined,0,10000,
+                  "swap-space-m5-8xlarge.dpincekrr8.us-west-2.elasticbeanstalk.com",
+                  80,ts_tcp,
+                  {proto_opts,negotiate,negotiate,"/http-bind/",false,false,
+                   false,"/chat","binary",[],10,3,600000,infinity,2000,32768,
+                   32768,32768,32768,[],true,false},
+                  false,1,
+                  {ts_request,parse,false,[],
+                   [{xpath,authenticity_token,
+                     {path,abs,
+                      {refine,
+                       {refine,
+                        {refine,
+                         {step,{child,{name,{<<"html">>,[],"html"}},[]}},
+                         {step,{child,{name,{<<"head">>,[],"head"}},[]}}},
+                        {step,
+                         {child,
+                          {name,{<<"meta">>,[],"meta"}},
+                          [{pred,
+                            {comp,'=',
+                             {path,rel,
+                              {step,
+                               {attribute,{name,{<<"name">>,[],"name"}},[]}}},
+                             {literal,<<"csrf-token">>}}}]}}},
+                       {step,
+                        {attribute,
+                         {name,{<<"content">>,[],"content"}},
+                         []}}}}}],
+                   {http_request,"/items/new","1.1",
+                    "swap-space-m5-8xlarge.dpincekrr8.us-west-2.elasticbeanstalk.com",
+                    undefined,[],get,"application/x-www-form-urlencoded",[],
+                    <<>>,0,undefined,undefined,undefined,undefined,undefined,
+                    undefined,undefined,undefined,undefined,undefined,
+                    undefined,undefined,undefined,undefined,undefined,[],
+                    false},
+                   true,undefined,undefined,undefined},
+                  true,-576460608296865371,-576460609853811478,15,21,false,
+                  -576460608296865371,-576460608296865371,[],<<>>,
+                  {http,0,0,-1,
+                   {none,302},
+                   false,false,
+                   {false,false},
+                   [],
+                   "Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4",
+                   [{cookie,"_swapspace_session",
+                     "cG5YVnBFRFZkNlUraXVqNU1wM3ozQld5ZnpZOTBNOExrUFA1djREdi9vUmRxbmlwWGROcEJHdSt5QWUvNnUvMHJ3aHBrOHpySnBqTUlvV3NKaXVEckhROHFsY3REV1RmRVY2R3RjZHBndkpkSzYrdVFJUi9kb2JMRGxHOTJmc3pDUzhUOFR0d1Ywd3RlSXd3YWdlUmEwYTN1ZW1xQ05oZ3JJUkNRbFFZUU1ONjBtdUc3SmhUcTdpWjlMVlprRndnRFdVVEpNQ1pkQnh6dHF1ODhVWGVad1k4VnhKQlgzOXlzQm1FMHV4cWJveUtJbzFDRUtjUGFlcno3cHN6b21iSzZUMGFUcHJLV0ZGRjF2WG8zMEJFcFE9PS0tck02ejZ3YlNrWlhnbE1UY0VsOFFKQT09--4f45fc95ef1891b13476051323b7138fac351bc6",
+                     undefined,undefined,undefined,undefined,
+                     ".swap-space-m5-8xlarge.dpincekrr8.us-west-2.elasticbeanstalk.com",
+                     undefined,undefined,"/",undefined,undefined,undefined}]},
+                  0,284,524288,524288,
+                  [{user_id,<<"2283">>},
+                   {encoded_authenticity_token,
+                    <<"dDYRaWQR2kpt2m3wW%2FNq1OFl%2Bsf8dZkpZxf%2BFbFwZyEJk3Kd1Lv7zUyd%2F1QmfG8hspcK2APbndDnWA0bkY0mQg%3D%3D">>},
+                   {authenticity_token,
+                    [<<"dDYRaWQR2kpt2m3wW/Nq1OFl+sf8dZkpZxf+FbFwZyEJk3Kd1Lv7zUyd/1QmfG8hspcK2APbndDnWA0bkY0mQg==">>]},
+                   {random_username,4747819},
+                   {tsung_userid,284}],
+                  ts_http,[],undefined,none}
+** Reason for termination = 
+** {{badmatch,{ok,<<>>}},[{erl_eval,expr,3,[]}]}
+
+=INFO REPORT==== 3-Dec-2019::08:06:34 ===
+           ts_search:(5:<0.343.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:35 ===
+           ts_search:(5:<0.343.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:39 ===
+           ts_search:(5:<0.387.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:39 ===
+           ts_search:(5:<0.397.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:40 ===
+           ts_search:(5:<0.401.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:41 ===
+           ts_search:(5:<0.407.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:42 ===
+           ts_search:(5:<0.397.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:43 ===
+           ts_search:(5:<0.491.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:43 ===
+           ts_search:(5:<0.449.0>) Dyn Var: no Match (varname=first_item), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:44 ===
+           ts_search:(5:<0.401.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:44 ===
+           ts_search:(5:<0.407.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:45 ===
+           ts_search:(5:<0.443.0>) Dyn Var: no Match (varname=first_item), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:45 ===
+           ts_search:(5:<0.411.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:45 ===
+           ts_search:(5:<0.407.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:46 ===
+           ts_search:(5:<0.486.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:46 ===
+           ts_search:(5:<0.445.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:46 ===
+           ts_search:(5:<0.411.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:48 ===
+           ts_search:(5:<0.512.0>) Dyn Var: no Match (varname=first_item), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:48 ===
+           ts_search:(5:<0.512.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:48 ===
+           ts_search:(5:<0.445.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:50 ===
+           ts_search:(5:<0.411.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:50 ===
+           ts_search:(5:<0.491.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:50 ===
+           ts_search:(5:<0.445.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:51 ===
+           ts_search:(5:<0.401.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:52 ===
+           ts_search:(5:<0.492.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:52 ===
+         ts_launcher:(5:<0.155.0>) Phase duration exceeded, but not all users were launched (30 users, 12.5% of phase)
+
+=INFO REPORT==== 3-Dec-2019::08:06:52 ===
+         ts_launcher:(5:<0.155.0>) This was the last phase, wait for connected users to finish their session
+
+=INFO REPORT==== 3-Dec-2019::08:06:52 ===
+           ts_search:(5:<0.401.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:52 ===
+           ts_search:(5:<0.496.0>) Dyn Var: no Match (varname=first_item), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:52 ===
+           ts_search:(5:<0.491.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:52 ===
+           ts_search:(5:<0.486.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:53 ===
+           ts_search:(5:<0.583.0>) Dyn Var: no Match (varname=authenticity_token), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:53 ===
+           ts_client:(5:<0.583.0>) Stop in state wait_ack, reason= {{badmatch,
+                                                                     {ok,
+                                                                      <<>>}},
+                                                                    [{erl_eval,
+                                                                      expr,3,
+                                                                      []}]}
+
+=ERROR REPORT==== 3-Dec-2019::08:06:53 ===
+** State machine <0.583.0> terminating 
+** Last message in was {tcp,#Port<0.2527>,
+                            <<"rder-bottom-right-radius: 4px;\n    border-top-color: #DADADA;\n    color: #666;\n    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);\n  }\n  </style>\n</head>\n\n<body class=\"rails-default-error-page\">\n  <!-- This file lives in public/500.html -->\n  <div class=\"dialog\">\n    <div>\n      <h1>We're sorry, but something went wrong.</h1>\n    </div>\n    <p>If you are the application owner check the logs for more information.</p>\n  </div>\n</body>\n</html>\n">>}
+** When State == wait_ack
+**      Data  == {state_rcv,#Port<0.2527>,
+                  {{0,0,0,0},0},
+                  undefined,0,10000,
+                  "swap-space-m5-8xlarge.dpincekrr8.us-west-2.elasticbeanstalk.com",
+                  80,ts_tcp,
+                  {proto_opts,negotiate,negotiate,"/http-bind/",false,false,
+                   false,"/chat","binary",[],10,3,600000,infinity,2000,32768,
+                   32768,32768,32768,[],true,false},
+                  false,1,
+                  {ts_request,parse,false,[],
+                   [{xpath,authenticity_token,
+                     {path,abs,
+                      {refine,
+                       {refine,
+                        {refine,
+                         {step,{child,{name,{<<"html">>,[],"html"}},[]}},
+                         {step,{child,{name,{<<"head">>,[],"head"}},[]}}},
+                        {step,
+                         {child,
+                          {name,{<<"meta">>,[],"meta"}},
+                          [{pred,
+                            {comp,'=',
+                             {path,rel,
+                              {step,
+                               {attribute,{name,{<<"name">>,[],"name"}},[]}}},
+                             {literal,<<"csrf-token">>}}}]}}},
+                       {step,
+                        {attribute,
+                         {name,{<<"content">>,[],"content"}},
+                         []}}}}}],
+                   {http_request,"/items/new","1.1",
+                    "swap-space-m5-8xlarge.dpincekrr8.us-west-2.elasticbeanstalk.com",
+                    undefined,[],get,"application/x-www-form-urlencoded",[],
+                    <<>>,0,undefined,undefined,undefined,undefined,undefined,
+                    undefined,undefined,undefined,undefined,undefined,
+                    undefined,undefined,undefined,undefined,undefined,[],
+                    false},
+                   true,undefined,undefined,undefined},
+                  true,-576460590088836676,-576460591757560352,15,21,false,
+                  -576460590088836676,-576460590088836676,[],
+                  <<"HTTP/1.1 500 Internal Server Error\r\nContent-Type: text/html; charset=UTF-8\r\nDate: Tue, 03 Dec 2019 08:06:53 GMT\r\nServer: nginx/1.16.1\r\nX-Request-Id: 0a8b5514-0bde-4011-96dc-c7b38bbce24d\r\nX-Runtime: 0.013085\r\nContent-Length: 1635\r\nConnection: keep-alive\r\n\r\n<!DOCTYPE html>\n<html>\n<head>\n  <title>We're sorry, but something went wrong (500)</title>\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n  <style>\n  .rails-default-error-page {\n    background-color: #EFEFEF;\n    color: #2E2F30;\n    text-align: center;\n    font-family: arial, sans-serif;\n    margin: 0;\n  }\n\n  .rails-default-error-page div.dialog {\n    width: 95%;\n    max-width: 33em;\n    margin: 4em auto 0;\n  }\n\n  .rails-default-error-page div.dialog > div {\n    border: 1px solid #CCC;\n    border-right-color: #999;\n    border-left-color: #999;\n    border-bottom-color: #BBB;\n    border-top: #B00100 solid 4px;\n    border-top-left-radius: 9px;\n    border-top-right-radius: 9px;\n    background-color: white;\n    padding: 7px 12% 0;\n    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);\n  }\n\n  .rails-default-error-page h1 {\n    font-size: 100%;\n    color: #730E15;\n    line-height: 1.5em;\n  }\n\n  .rails-default-error-page div.dialog > p {\n    margin: 0 0 1em;\n    padding: 1em;\n    background-color: #F7F7F7;\n    border: 1px solid #CCC;\n    border-right-color: #999;\n    border-left-color: #999;\n    border-bottom-color: #999;\n    border-bottom-left-radius: 4px;\n    bo">>,
+                  {http,1635,1192,-1,
+                   {500,none},
+                   false,false,
+                   {false,false},
+                   [],
+                   "Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4",
+                   [{cookie,"_swapspace_session",
+                     "UzJ6bmNXWVpPNUNROUdDQjJ2L3lSaW5KdEN5LzVBb3ZMYUxQUWMxQWlPaWI4Vk5YMHJCV1RVYUYrNm5ZN2FUaGRCbHhrQVFZWUtBK1RTbUVocVIvSzZTb0M5YUtBMS81cUdrYmU5MFNPSEZIVlpRR2JQdis2Nkl5Qkg2R2RXb1JYWjhQRXlpUytSWUdzZmUyNkpIWnZBVUFqQUZMVkFXSExrdWZjdmpUbmZuNE1aR01namdnVjdEN1luSExjbk1kYnUzeVhmR2o4dkdIYU92M2oyS1ZrQ0drRFlRVXN1VllPSG02Ri9UQkQyY2ZNblNjb3E0STlheVJoaFNCZEZwN00wdG1kQkkrc09ZYjIrWFAwTG5BWGc9PS0tMkxWUlhIRkVNbFdpUEU2UWxtSk1odz09--e5c10c8991ecf136b06ae1ee3fce69c7ce8676d7",
+                     undefined,undefined,undefined,undefined,
+                     ".swap-space-m5-8xlarge.dpincekrr8.us-west-2.elasticbeanstalk.com",
+                     undefined,undefined,"/",undefined,undefined,undefined}]},
+                  1448,409,524288,524288,
+                  [{user_id,<<"2408">>},
+                   {encoded_authenticity_token,
+                    <<"UfS13SmsThj2HKx7rmEJC%2BIvyU9EZytnSEphppir9LoVeOQlIPOCrcOzE2uoXYMrmSKphxWYRVQr7Ponsrq6Jg%3D%3D">>},
+                   {authenticity_token,
+                    [<<"UfS13SmsThj2HKx7rmEJC+IvyU9EZytnSEphppir9LoVeOQlIPOCrcOzE2uoXYMrmSKphxWYRVQr7Ponsrq6Jg==">>]},
+                   {random_username,4660554},
+                   {tsung_userid,409}],
+                  ts_http,[],undefined,none}
+** Reason for termination = 
+** {{badmatch,{ok,<<>>}},[{erl_eval,expr,3,[]}]}
+
+=INFO REPORT==== 3-Dec-2019::08:06:53 ===
+           ts_search:(5:<0.512.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:53 ===
+           ts_search:(5:<0.397.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:53 ===
+           ts_search:(5:<0.445.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:53 ===
+           ts_search:(5:<0.537.0>) Dyn Var: no Match (varname=first_item), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:53 ===
+           ts_search:(5:<0.537.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:55 ===
+           ts_search:(5:<0.537.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:55 ===
+           ts_search:(5:<0.527.0>) Dyn Var: no Match (varname=first_item), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:55 ===
+           ts_search:(5:<0.486.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:56 ===
+           ts_search:(5:<0.491.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:56 ===
+           ts_search:(5:<0.542.0>) Dyn Var: no Match (varname=first_item), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:56 ===
+           ts_search:(5:<0.581.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:57 ===
+           ts_search:(5:<0.542.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:58 ===
+           ts_search:(5:<0.544.0>) Dyn Var: no Match (varname=first_item), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:58 ===
+           ts_search:(5:<0.544.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:59 ===
+           ts_search:(5:<0.492.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:06:59 ===
+           ts_search:(5:<0.542.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:07:00 ===
+           ts_search:(5:<0.512.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:07:01 ===
+           ts_search:(5:<0.581.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:07:01 ===
+           ts_search:(5:<0.492.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:07:02 ===
+           ts_search:(5:<0.544.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:07:03 ===
+           ts_search:(5:<0.581.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:07:04 ===
+           ts_search:(5:<0.581.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:07:04 ===
+           ts_search:(5:<0.537.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:07:05 ===
+           ts_search:(5:<0.492.0>) Dyn Var (RE): no Match (varname=item_id), 
+
+=INFO REPORT==== 3-Dec-2019::08:07:27 ===
+     ts_launcher_mgr:(5:<0.149.0>) No more active users 'tsung_controller@ip-172-31-23-14' "7012"
+
+=INFO REPORT==== 3-Dec-2019::08:07:27 ===
+              ts_mon:(5:<0.103.0>) stopping monitor (normal)
