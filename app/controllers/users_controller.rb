@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   include ItemsHelper
   def show 
-    @user = User.find(params[:id])
-    users_item = Item.where(["user_id = :id", {id: params[:id]}])
-    @user_items = sorted_items(users_item)
+    
+      @user = User.find(params[:id])
+      users_item = Item.where(["user_id = :id", {id: params[:id]}])
+      @user_items = sorted_items(users_item)
+    
   end
 
   def new

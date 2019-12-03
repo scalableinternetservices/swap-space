@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    
+    if stale? ([@prev_page, @next_page, @items])
       item_per_page = 10
       page_num = params['page_num'].present? ? params['page_num'].to_i : 1
       
@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
       @prev_page = page_num == 1 ? nil : page_num - 1
       @next_page = queried_items.length <= item_per_page ? nil : page_num + 1
       @items = queried_items.limit(item_per_page)
-    
+    end
   end
 
   # GET /items/1
