@@ -60,10 +60,15 @@
                       <h4 class="card-title mt-2"><%= item.name %></h5>
                       <p class="card-text">Category: <%= item.category %></p>
                       <% owner = User.find(item.user_id) %>
-                      <p class="card-text">User: <%= owner.name %></p>
-                      <p class="card-text">Description: <%= item.description%></p>
-                      <p class="card-text">Date Added: <%= item.created_at %></p>
-                      <p class="card-text">Popularity: <%= item.popularity %></p>
+                      <% cache (owner) do %>
+                        <p class="card-text">User: <%= owner.name %></p>
+                        <p class="card-text">Description: <%= item.description%></p>
+                        <p class="card-text">Date Added: <%= item.created_at %></p>
+                        <% pplrt=item.popularity%>
+                        <% cache (pplrt) do %>
+                          <p class="card-text">Popularity: <%= pplrt %></p>
+                        <% end %>
+                      <% end %>
                     </div>
                   </div>
                 </div>

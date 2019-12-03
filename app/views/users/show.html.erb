@@ -40,48 +40,54 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
       <% @user_items.each do |item| %>
-        <% if !item.trade_established %>
-          <div class="container">
-            <div class="card mb-3 col-md-6 offset-md-3 pl-0 pr-0">
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <% if !item.images.empty? %>
-                    <div id='MyCarousel' class="carousel slide carousel-fade" data-ride="carousel">
-                      <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active card-img-left">
-                          <%= image_tag(item.images.first, style: 'height: 100%; width: 100%; object-fit: contain') %>
-                        </div>
-                        <% item.images.drop(1).each do |photo| %>
-                          <div class="carousel-item card-img-left">
-                            <%= image_tag(photo, style: 'height: 100%; width: 100%; object-fit: contain') %>
+        <% cache(item) do%>
+          <% if !item.trade_established %>
+            <div class="container">
+              <div class="card mb-3 col-md-6 offset-md-3 pl-0 pr-0">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <% if !item.images.empty? %>
+                      <div id='MyCarousel' class="carousel slide carousel-fade" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                          <div class="carousel-item active card-img-left">
+                            <%= image_tag(item.images.first, style: 'height: 100%; width: 100%; object-fit: contain') %>
                           </div>
-                        <% end %>
+                          <% item.images.drop(1).each do |photo| %>
+                            <div class="carousel-item card-img-left">
+                              <%= image_tag(photo, style: 'height: 100%; width: 100%; object-fit: contain') %>
+                            </div>
+                          <% end %>
+                        </div>
+                        <ol class="carousel-indicators">
+                          <% item.images.each_with_index do |photo, n| %>
+                            <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+                          <% end %>
+                        </ol>
                       </div>
-                      <ol class="carousel-indicators">
-                        <% item.images.each_with_index do |photo, n| %>
-                          <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
-                        <% end %>
-                      </ol>
-                    </div>
-                  <% end %>
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <% provide(:title, item.name) %>
-                    <h4 class="card-title"><%=  item.name %></h4>
-                    <p class="card-text">Category: <%= item.category %></p>
-                    <p class="card-text">User: <%= @user.name %></p>
-                    <p class="card-text">Description: <%= item.description%></p>
-                    <p class="card-text">Date Added: <%= item.created_at %></p>
-                    <p class="card-text">Popularity: <%= item.popularity %></p>
+                    <% end %>
                   </div>
-                  <button class="btn ml-2" aria-haspopup="true" aria-expanded="false"><%= link_to 'Show', item, class: "btn btn-outline-primary" %></button>
-                  <button class="btn" aria-haspopup="true" aria-expanded="false"><%= link_to 'Edit', edit_item_path(item), class: "btn btn-outline-primary" %></button>
-                  <button class="btn" aria-haspopup="true" aria-expanded="false"><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></button>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <% provide(:title, item.name) %>
+                      <h4 class="card-title"><%=  item.name %></h4>
+                      <p class="card-text">Category: <%= item.category %></p>
+                      <p class="card-text">User: <%= @user.name %></p>
+                      <p class="card-text">Description: <%= item.description%></p>
+                      <p class="card-text">Date Added: <%= item.created_at %></p>
+                    
+                      <%= pplrt=item.popularity %>
+                      <%cache(pplrt) do %>
+                        <p class="card-text">Popularity: <%= pplrt %></p>
+                      <%end%>
+                    </div>
+                    <button class="btn ml-2" aria-haspopup="true" aria-expanded="false"><%= link_to 'Show', item, class: "btn btn-outline-primary" %></button>
+                    <button class="btn" aria-haspopup="true" aria-expanded="false"><%= link_to 'Edit', edit_item_path(item), class: "btn btn-outline-primary" %></button>
+                    <button class="btn" aria-haspopup="true" aria-expanded="false"><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       <% end %>
     </li>
@@ -95,21 +101,29 @@
       <table class="table">
         <tbody>
           <% User.find(params["id"]).items.each do |item| %>
-            <tr>
-              <% if item.trade_established %>
-                <td> <%= link_to "#{item.name}", item, class: "text-info" %> <td>
-                <th> Traded with </th>
-                <% item_traded = item.traded_item %>
-                <td> <%= link_to "#{item_traded.name}", item_traded, class: "text-info"  %> </td>
-                <th> Belonging To </th>
-                <% owner = User.find(item_traded.user_id) %>
-                <td> <%= link_to "#{owner.name}", owner, class: "text-info"  %> </td>
-                <th> at </th>
-                <% item_t = item.traded_item_time %>
-                <% item_t_traded_with = item_traded.traded_item_time %>
-                <td> <%= item.compare(item_t['created_at'], item_t_traded_with['created_at'])%> </td>
-              <% end %>
-            </tr>
+            <% cache(item) do %>
+              <tr>
+                <% if item.trade_established %>
+                  <td> <%= link_to "#{item.name}", item, class: "text-info" %> <td>
+                  <th> Traded with </th>
+                  <% item_traded = item.traded_item %>
+                  <td> <%= link_to "#{item_traded.name}", item_traded, class: "text-info"  %> </td>
+                  <th> Belonging To </th>
+                  <% owner = User.find(item_traded.user_id) %>
+                  <% cache(owner) do %>
+                  <td> <%= link_to "#{owner.name}", owner, class: "text-info"  %> </td>
+                  <th> at </th>
+                  <% item_t = item.traded_item_time %>
+                  <%cache(item_t) do %>
+                  <% item_t_traded_with = item_traded.traded_item_time %>
+                  <% cache (item_t_traded_with) do %>
+                  <td> <%= item.compare(item_t['created_at'], item_t_traded_with['created_at'])%> </td>
+                  <% end %>
+                  <% end %>
+                  <% end %>
+                <% end %>
+              </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>
