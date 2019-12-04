@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
      # )
      # .offset((page_num - 1) * item_per_page)
      # .limit(item_per_page + 1)
-    queried_itemsRails.cache.fetch("querieditems", expires_in: 10.minutes) do
+    queried_items=Rails.cache.fetch("querieditems", expires_in: 10.minutes) do
       sorted_items(
          Item.where(trade_established: false)
         )
