@@ -32,9 +32,9 @@ A market place where users can post items that they are willing to trade for oth
     
     <img src="Images/Gaohong.jpeg" width="300px">
     
-## About
+## Wiki
 
-#Deploying on AWS (with and without scaling)
+# Deploying on AWS (with and without scaling)
 
 ```
 ssh -i ~/.ssh/TEAMNAME.pem TEAMNAME@ec2-52-35-41-146.us-west-2.compute.amazonaws.com
@@ -49,7 +49,7 @@ With horizontal scaling
 ```
 eb create -db.engine postgres --instances 3 -db.i db.t3.micro -db.user u -db.pass password --envvars SECRET_KEY_BASE=any-secret-you-like --single whatever-you-want-to-call-it
 ```
-#TSUNG Testing
+# TSUNG Testing
 Start instance of CloudFormation and ssh into instance
 ```
 tsung -f test.xml start
