@@ -37,22 +37,22 @@ A market place where users can post items that they are willing to trade for oth
 #Deploying on AWS (with and without scaling)
 
 ```
-$ssh -i ~/.ssh/TEAMNAME.pem TEAMNAME@ec2-52-35-41-146.us-west-2.compute.amazonaws.com
-$eb create -db.engine postgres -db.i db.t3.micro -db.user u -db.pass password --envvars SECRET_KEY_BASE=any-secret-you-like --single whatever-you-want-to-call-it
+ssh -i ~/.ssh/TEAMNAME.pem TEAMNAME@ec2-52-35-41-146.us-west-2.compute.amazonaws.com
+eb create -db.engine postgres -db.i db.t3.micro -db.user u -db.pass password --envvars SECRET_KEY_BASE=any-secret-you-like --single whatever-you-want-to-call-it
 ```
 
 With vertical scaling
 ```
-$eb create -db.engine postgres --instance_type m5.8xlarge -db.i db.t3.micro -db.user u -db.pass password --envvars SECRET_KEY_BASE=any-secret-you-like --single whatever-you-want-to-call-it
+eb create -db.engine postgres --instance_type m5.8xlarge -db.i db.t3.micro -db.user u -db.pass password --envvars SECRET_KEY_BASE=any-secret-you-like --single whatever-you-want-to-call-it
 ```
 With horizontal scaling
 ```
-$eb create -db.engine postgres --instances 3 -db.i db.t3.micro -db.user u -db.pass password --envvars SECRET_KEY_BASE=any-secret-you-like --single whatever-you-want-to-call-it
+eb create -db.engine postgres --instances 3 -db.i db.t3.micro -db.user u -db.pass password --envvars SECRET_KEY_BASE=any-secret-you-like --single whatever-you-want-to-call-it
 ```
 #TSUNG Testing
 Start instance of CloudFormation and ssh into instance
 ```
-$tsung -f test.xml start
+tsung -f test.xml start
 ```
 Copy remote tsung logs into local computer
 ```
